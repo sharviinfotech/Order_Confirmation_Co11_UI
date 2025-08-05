@@ -1,0 +1,68 @@
+<div class="monitoring-container">
+  <h1>Machine Monitoring</h1>
+
+  <div class="table-responsive">
+    <table class="monitoring-table">
+      <thead>
+        <tr>
+          <th>Machine ID</th>
+          <th>Department</th>
+          <th>Status</th>
+          <th>Running Since</th>
+          <th>RPM</th>
+          <th>Temp (°C)</th>
+          <th>Load (%)</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Machine 1 (with duplicate) -->
+        <tr>
+          <td>MC-1001</td>
+          <td>Line A</td>
+          <td><span class="status-planned">In Progress</span></td>
+          <td>04 Aug 2025 08:00</td>
+          <td>1420</td>
+          <td>68</td>
+          <td>75</td>
+          <td class="action-buttons">
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+          </td>
+        </tr>
+        
+        <!-- Machine 2 -->
+        <tr>
+          <td>MC-1002</td>
+          <td>Line B</td>
+          <td><span class="status-in-progress">Running</span></td>
+          <td>04 Aug 2025 08:30</td>
+          <td>0</td>
+          <td>40</td>
+          <td>5</td>
+          <td class="action-buttons">
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+          </td>
+        </tr>
+        
+        <!-- Duplicate Machine 1 -->
+        <tr>
+          <td>MC-1001</td>
+          <td>Line A</td>
+          <td><span class="status-planned">In Progress</span></td>
+          <td>04 Aug 2025 08:00</td>
+          <td>1420</td>
+          <td>68</td>
+          <td>75</td>
+          <td class="action-buttons">
+            <button class="edit-btn">Edit</button>
+            <button class="delete-btn">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  
+</div>

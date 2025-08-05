@@ -42,7 +42,10 @@
             "outputPath": "dist/skote",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "src/polyfills.ts",
+              "@angular/localize/init"
+            ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -126,7 +129,10 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "src/polyfills.ts",
+              "@angular/localize/init"
+            ],
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
@@ -135,8 +141,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
-            ],
+  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+  "src/styles.css"
+],
+
             "scripts": []
           }
         },

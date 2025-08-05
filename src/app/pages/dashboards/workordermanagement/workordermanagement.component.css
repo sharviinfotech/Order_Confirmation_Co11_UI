@@ -1,0 +1,117 @@
+.workorder-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+  max-width: 95%;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.workorder-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.workorder-table th {
+  background-color: #4a4fa7;
+  color: white;
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.workorder-table td {
+  padding: 10px 15px;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.workorder-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Priority Badges */
+.priority-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.priority-high {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.priority-medium {
+  background-color: #f39c12;
+  color: white;
+}
+
+.priority-low {
+  background-color: #2ecc71;
+  color: white;
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-not-started {
+  background-color: #bdc3c7;
+  color: #2c3e50;
+}
+
+.status-in-progress {
+  background-color: #f1c40f;
+  color: #2c3e50;
+}
+
+.status-halted {
+  background-color: #e67e22;
+  color: white;
+}
+
+.status-completed {
+  background-color: #2ecc71;
+  color: white;
+}
+
+/* Action Buttons */
+.actions {
+  display: flex;
+  gap: 5px;
+}
+
+.btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.btn-edit {
+  background-color: #00bcd4;
+  color: white;
+}
+
+.btn-delete {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}

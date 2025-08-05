@@ -1,40 +1,43 @@
 import { NgModule } from '@angular/core';
-import { DashboardsRoutingModule } from './dashboards-routing.module';
-import { BsDropdownConfig} from 'ngx-bootstrap/dropdown';
-import { SampleComponentComponent } from './default/sample-component/sample-component.component';
-import { InvoiceComponent } from './invoice/invoice.component';
-import { InvoiceLayoutComponent } from './invoice-layout/invoice-layout.component';
-import { InvoiceReportsComponent } from './invoice-reports/invoice-reports.component';
-import { InvoiceUserCreationComponent } from './invoice-user-creation/invoice-user-creation.component';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { ReviewNotificationComponent } from './review-notification/review-notification.component';
-import { DashboardBackupComponent } from './dashboard-backup/dashboard-backup.component';
-import { SectorWiseComponent } from './sector-wise/sector-wise.component';
-// import { GlobalReviewEditComponent } from './global-review-edit/global-review-edit.component';
+import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
+
+import { DashboardsRoutingModule } from './dashboards-routing.module';
+
+// Standalone components (import only)
+import { MachineMonitoringComponent } from './machinemonitoring/machinemonitoring.component';
+import { RawmaterialmanagementComponent } from './inventory/rawmaterialmanagement/rawmaterialmanagement.component';
+import { QualitycontrolComponent } from './qualitycontrol/qualitycontrol.component';
+import { PreventivemaintenancemanagementComponent } from './preventivemaintenancemanagement/preventivemaintenancemanagement.component';
+import { UserManagementComponent } from './usermanagement/usermanagement.component';
+import { ReportsandAnalyticsComponent } from './reportsandanalytics/reportsandanalytics.component';
+import { SettingsandMasterdataComponent } from './settingsandmasterdata/settingsandmasterdata.component';
+import { ProductionplanningComponent } from './productionplanning/productionplanning.component';
 
 @NgModule({
   declarations: [
-    SampleComponentComponent,
-    // SectorWiseComponent,
-    // DashboardBackupComponent,
-    // ReviewNotificationComponent,
-    // GlobalReviewEditComponent,
-    // InvoiceUserCreationComponent,
-    // InvoiceReportsComponent,
-    // InvoiceComponent,
-    // InvoiceLayoutComponent
+    // NO declarations — all components are standalone
   ],
   imports: [
-    DashboardsRoutingModule,
     CommonModule,
     ReactiveFormsModule,
-    BsDatepickerModule.forRoot(),  // Ensure it's in the imports array
-    NgxSpinnerModule
+    DashboardsRoutingModule,
+    BsDatepickerModule.forRoot(),
+    NgxSpinnerModule,
 
+    // Standalone components
+    MachineMonitoringComponent,
+    RawmaterialmanagementComponent,
+    QualitycontrolComponent,
+    PreventivemaintenancemanagementComponent,
+    UserManagementComponent,
+    ReportsandAnalyticsComponent,
+    SettingsandMasterdataComponent,
+    ProductionplanningComponent
   ],
-  providers: [BsDropdownConfig],
+  providers: [BsDropdownConfig]
 })
-export class DashboardsModule { }
+export class DashboardsModule {}

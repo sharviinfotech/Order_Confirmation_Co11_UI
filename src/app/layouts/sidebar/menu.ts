@@ -21,56 +21,124 @@ export const MENU: MenuItem[] = [
             //     parentId: 1,
             //     icon: 'bx bx-layout',
             // },
-            {
-                id:5,
-                label: 'Invoice',
-                link: '/Invoice',
-                parentId: 1,
-                icon: 'bx bx-plus',
-            },
+            // {
+            //     id:5,
+            //     label: 'Invoice',
+            //     link: '/Invoice',
+            //     parentId: 1,
+            //     icon: 'bx bx-plus',
+            // },
             
+            // {
+            //     id: 6,
+            //     label: 'Invoice Decision',
+            //     link: '/InvoiceDecision',
+            //     parentId: 1,
+            //     icon: 'bx-sync', // Represents invoice approval/decision
+            // },
+            // {
+            //     id:7 ,
+            //     label: 'Invoice Reports',
+            //     link: '/InvoiceReports',
+            //     parentId: 1,
+            //     icon: 'bx bx-spreadsheet',
+            // },
+            // {
+            //     id: 3,
+            //     label: 'Customer Creation',
+            //     link: '/CustomerCreation',
+            //     parentId: 1,
+            //     icon: 'bx-user-check', // Represents invoice approval/decision
+            // },
+            // {
+            //     id: 8,
+            //     label: 'User Creation',
+            //     link: '/InvoiceUserCreation',
+            //     parentId: 1,
+            //     icon: 'bx bx-user-check',
+            // },
+            // {
+            //     id: 9,
+            //     label: 'Service Charges',
+            //     link: '/ServiceCharges',
+            //     parentId: 1,
+            //     icon: 'bx bx-receipt',
+            // },
+            //  {
+            //     id: 9,
+            //     label: 'Sector Wise',
+            //     link: '/sectorwise',
+            //     parentId: 1,
+            //     icon: 'bx bx-receipt',
+            // },
             {
-                id: 6,
-                label: 'Invoice Decision',
-                link: '/InvoiceDecision',
+                id: 9,
+                label: 'Production Planning',
+                link: '/productionplanning',
                 parentId: 1,
-                icon: 'bx-sync', // Represents invoice approval/decision
-            },
-            {
-                id:7 ,
-                label: 'Invoice Reports',
-                link: '/InvoiceReports',
-                parentId: 1,
-                icon: 'bx bx-spreadsheet',
-            },
-            {
-                id: 3,
-                label: 'Customer Creation',
-                link: '/CustomerCreation',
-                parentId: 1,
-                icon: 'bx-user-check', // Represents invoice approval/decision
-            },
-            {
-                id: 8,
-                label: 'User Creation',
-                link: '/InvoiceUserCreation',
-                parentId: 1,
-                icon: 'bx bx-user-check',
+                icon: 'bx bx-receipt',
             },
             {
                 id: 9,
-                label: 'Service Charges',
-                link: '/ServiceCharges',
+                label: 'Machine Monitoring',
+                link: '/machinemonitoring',
+                parentId: 1,
+                icon: 'bx bx-receipt',
+            },
+            {
+                id: 9,
+                label: 'Work Order Management',
+                link: '/workordermanagement',
                 parentId: 1,
                 icon: 'bx bx-receipt',
             },
              {
                 id: 9,
-                label: 'Sector Wise',
-                link: '/sectorwise',
+                label: 'Raw Material Management',
+                link: '/rawmaterialmanagement',
                 parentId: 1,
                 icon: 'bx bx-receipt',
             },
+             
+             {
+                id: 9,
+                label: 'Quality Control',
+                link: '/qualitycontrol',
+                parentId: 1,
+                icon: 'bx bx-receipt',
+            },
+            {
+                id: 9,
+                label: 'Preventive Maintenance Management',
+                link: '/preventivemaintenancemanagement',
+                parentId: 1,
+                icon: 'bx bx-receipt',
+            },
+            {
+                id: 9,
+                label: 'User Management',
+                link: '/usermanagement',
+                parentId: 1,
+                icon: 'bx bx-receipt',
+            },
+            {
+                id: 9,
+                label: 'Reports And Analytics',
+                link: '/reportsandanalytics',
+                parentId: 1,
+                icon: 'bx bx-receipt',
+            },
+            {
+                id: 9,
+                label: 'Settings And Master Data',
+                link: '/settingsandmasterdata',
+                parentId: 1,
+                icon: 'bx bx-receipt',
+            },
+            
+             
+           
+            
             
 
             // <i class="bx bx-user-plus"></i>  

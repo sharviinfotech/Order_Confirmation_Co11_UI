@@ -156,30 +156,30 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   initialize(): void {
     console.log("Original MENU:", MENU);
 
-    if (!this.loginData?.data?.userActivity) {
-        console.log("No user activity found!");
-        return;
-    }
+    // if (!this.loginData?.data?.userActivity) {
+    //     console.log("No user activity found!");
+    //     return;
+    // }
 
     const userActivity = this.loginData.data.userActivity;
 
     // Define access rules
-    const accessMap = {
-        'ADMIN': MENU, // Admin gets all components
-        'MD': [
-            { id: 2, label: "Dashboard", link: "/dashboard", parentId: 2, icon: "bx-home-circle" },
-            { id: 6, label: "Invoice Decision", link: "/InvoiceDecision", parentId: 1, icon: "bx-sync" },
-            { id: 7, label: "Invoice Reports", link: "/InvoiceReports", parentId: 1, icon: "bx bx-spreadsheet" }
-        ],
-        'ACCOUNTS': [
-          { id: 2, label: "Dashboard", link: "/dashboard", parentId: 2, icon: "bx-home-circle" },
-          { id: 6, label: "Invoice Decision", link: "/InvoiceDecision", parentId: 1, icon: "bx-sync" },
-          { id: 7, label: "Invoice Reports", link: "/InvoiceReports", parentId: 1, icon: "bx bx-spreadsheet" }
-        ]
-    };
+    // const accessMap = {
+    //     'ADMIN': MENU, // Admin gets all components
+    //     'MD': [
+    //         { id: 2, label: "Dashboard", link: "/dashboard", parentId: 2, icon: "bx-home-circle" },
+    //         { id: 6, label: "Invoice Decision", link: "/InvoiceDecision", parentId: 1, icon: "bx-sync" },
+    //         { id: 7, label: "Invoice Reports", link: "/InvoiceReports", parentId: 1, icon: "bx bx-spreadsheet" }
+    //     ],
+    //     'ACCOUNTS': [
+    //       { id: 2, label: "Dashboard", link: "/dashboard", parentId: 2, icon: "bx-home-circle" },
+    //       { id: 6, label: "Invoice Decision", link: "/InvoiceDecision", parentId: 1, icon: "bx-sync" },
+    //       { id: 7, label: "Invoice Reports", link: "/InvoiceReports", parentId: 1, icon: "bx bx-spreadsheet" }
+    //     ]
+    // };
 
     // Assign the allowed menu items based on user role
-    this.menuItems = accessMap[userActivity] || [];
+    this.menuItems = MENU
 
     console.log("Filtered menuItems:", this.menuItems);
 }

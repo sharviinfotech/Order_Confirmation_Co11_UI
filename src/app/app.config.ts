@@ -6,7 +6,6 @@ import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
-
 // Other module imports
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -35,33 +34,34 @@ import { provideRouter } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 
+import { NgChartsModule } from 'ng2-charts'; // ✅ Added for ng2-charts
+
 export function createTranslateLoader(http: HttpClient): any {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
     provideStore(rootReducer),
-    provideEffects(
-      [
-        FilemanagerEffects,
-        OrderEffects,
-        AuthenticationEffects,
-        CartEffects,
-        ProjectEffects,
-        usersEffects,
-        userslistEffects,
-        JoblistEffects,
-        CandidateEffects,
-        InvoiceDataEffects,
-        ChatEffects,
-        tasklistEffects,
-        OrdersEffects,
-        CustomerEffects,
-        MailEffects
-      ]
-    ),
+    provideEffects([
+      FilemanagerEffects,
+      OrderEffects,
+      AuthenticationEffects,
+      CartEffects,
+      ProjectEffects,
+      usersEffects,
+      userslistEffects,
+      JoblistEffects,
+      CandidateEffects,
+      InvoiceDataEffects,
+      ChatEffects,
+      tasklistEffects,
+      OrdersEffects,
+      CustomerEffects,
+      MailEffects
+    ]),
     provideHttpClient(withInterceptorsFromDi()),
     importProvidersFrom(
       TranslateModule.forRoot({
@@ -71,10 +71,10 @@ export const appConfig: ApplicationConfig = {
           deps: [HttpClient]
         }
       }),
+      NgChartsModule // ✅ Integrated ng2-charts
     ),
     provideAnimations(),
     provideToastr(),
     { provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } }
   ]
 };
-

@@ -1,0 +1,34 @@
+<div class="container mt-4">
+  <h3 class="text-center mb-3">Operator / User Management</h3>
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Operator/User ID</th>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Department</th>
+        <th>Assigned Shift</th>
+        <th>Contact Number</th>
+        <th>Login Permissions</th>
+        <th>Last Login</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let op of operators">
+        <td>{{ op.id }}</td>
+        <td>{{ op.name }}</td>
+        <td>{{ op.role }}</td>
+        <td>{{ op.department }}</td>
+        <td>{{ op.shift }}</td>
+        <td>{{ op.contact }}</td>
+        <td>{{ op.permissions }}</td>
+        <td>{{ op.lastLogin }}</td>
+        <td>
+          <button class="btn btn-success btn-sm me-2">Edit</button>
+          <button class="btn btn-danger btn-sm">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

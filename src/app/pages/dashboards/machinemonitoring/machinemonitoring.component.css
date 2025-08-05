@@ -1,0 +1,88 @@
+/* Exact same styling as Production Planning */
+.monitoring-container {
+  font-family: Arial, sans-serif;
+  max-width: 95%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+}
+
+.monitoring-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.monitoring-table th {
+  background-color: #5b609f;
+  color: white;
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.monitoring-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Status badges - colors matching Production Planning */
+.status-planned {
+  background-color: #4e73df;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.status-in-progress {
+  background-color: #f6c23e;
+  color: #2c3e50;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* Action buttons - identical to Production Planning */
+.action-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.edit-btn {
+  background-color: #36b9cc;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background-color: #e74a3b;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  color: #666;
+  font-size: 14px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}

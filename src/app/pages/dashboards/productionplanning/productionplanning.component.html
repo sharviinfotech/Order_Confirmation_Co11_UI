@@ -1,0 +1,36 @@
+<div class="production-container">
+  <h2>Production Planning</h2>
+
+  <table class="production-table">
+    <thead>
+      <tr>
+        <th>Order ID</th>
+        <th>Product Name / Code</th>
+        <th>Planned Quantity</th>
+        <th>Actual Quantity</th>
+        <th>Shift / Date / Time</th>
+        <th>Production Line</th>
+        <th>Assigned Operator</th>
+        <th>Target Time</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let plan of productionPlans">
+        <td>{{ plan.orderId }}</td>
+        <td>{{ plan.productName }}</td>
+        <td>{{ plan.plannedQty }}</td>
+        <td>{{ plan.actualQty }}</td>
+        <td>{{ plan.shift }}</td>
+        <td>{{ plan.productionLine }}</td>
+        <td>{{ plan.operator }}</td>
+        <td>{{ plan.targetTime }}</td>
+        <td>
+          <span class="status-badge {{ getStatusClass(plan.status) }}">
+            {{ plan.status }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
