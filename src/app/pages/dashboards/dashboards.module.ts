@@ -15,11 +15,15 @@ import { PreventivemaintenancemanagementComponent } from './preventivemaintenanc
 import { UserManagementComponent } from './usermanagement/usermanagement.component';
 import { ReportsandAnalyticsComponent } from './reportsandanalytics/reportsandanalytics.component';
 import { SettingsandMasterdataComponent } from './settingsandmasterdata/settingsandmasterdata.component';
-import { ProductionplanningComponent } from './productionplanning/productionplanning.component';
+import { ProductionPlanningComponent } from './productionplanning/productionplanning.component';
+import { ProductionmonitoringComponent } from './productionmonitoring/productionmonitoring.component';
+
 
 @NgModule({
   declarations: [
     // NO declarations — all components are standalone
+  
+   
   ],
   imports: [
     CommonModule,
@@ -36,7 +40,10 @@ import { ProductionplanningComponent } from './productionplanning/productionplan
     UserManagementComponent,
     ReportsandAnalyticsComponent,
     SettingsandMasterdataComponent,
-    ProductionplanningComponent
+    ProductionPlanningComponent,
+    
+    
+   
   ],
   providers: [BsDropdownConfig]
 })

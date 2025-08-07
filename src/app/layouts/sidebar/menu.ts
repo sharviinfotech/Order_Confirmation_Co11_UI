@@ -80,6 +80,13 @@ export const MENU: MenuItem[] = [
             },
             {
                 id: 9,
+                label: 'Production Monitoring',
+                link: '/productionmonitoring',
+                parentId: 1,
+                icon: 'bx bx-receipt',
+            },
+            {
+                id: 9,
                 label: 'Machine Monitoring',
                 link: '/machinemonitoring',
                 parentId: 1,

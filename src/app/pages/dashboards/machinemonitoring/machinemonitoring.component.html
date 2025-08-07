@@ -1,68 +1,102 @@
-<div class="monitoring-container">
-  <h1>Machine Monitoring</h1>
+<h2>Machine Monitoring</h2>
 
-  <div class="table-responsive">
-    <table class="monitoring-table">
-      <thead>
-        <tr>
-          <th>Machine ID</th>
-          <th>Department</th>
-          <th>Status</th>
-          <th>Running Since</th>
-          <th>RPM</th>
-          <th>Temp (°C)</th>
-          <th>Load (%)</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Machine 1 (with duplicate) -->
-        <tr>
-          <td>MC-1001</td>
-          <td>Line A</td>
-          <td><span class="status-planned">In Progress</span></td>
-          <td>04 Aug 2025 08:00</td>
-          <td>1420</td>
-          <td>68</td>
-          <td>75</td>
-          <td class="action-buttons">
-            <button class="edit-btn">Edit</button>
-            <button class="delete-btn">Delete</button>
-          </td>
-        </tr>
-        
-        <!-- Machine 2 -->
-        <tr>
-          <td>MC-1002</td>
-          <td>Line B</td>
-          <td><span class="status-in-progress">Running</span></td>
-          <td>04 Aug 2025 08:30</td>
-          <td>0</td>
-          <td>40</td>
-          <td>5</td>
-          <td class="action-buttons">
-            <button class="edit-btn">Edit</button>
-            <button class="delete-btn">Delete</button>
-          </td>
-        </tr>
-        
-        <!-- Duplicate Machine 1 -->
-        <tr>
-          <td>MC-1001</td>
-          <td>Line A</td>
-          <td><span class="status-planned">In Progress</span></td>
-          <td>04 Aug 2025 08:00</td>
-          <td>1420</td>
-          <td>68</td>
-          <td>75</td>
-          <td class="action-buttons">
-            <button class="edit-btn">Edit</button>
-            <button class="delete-btn">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<!-- New Machine Button -->
+<button (click)="openPopupForAdd()">+ New Machine</button>
+
+<!-- Machine Monitoring Table -->
+<table *ngIf="machines.length > 0">
+  <thead>
+    <tr>
+      <th>Machine ID / Name</th>
+      <th>Line / Department</th>
+      <th>Current Status</th>
+      <th>Running Since</th>
+      <th>Uptime %</th>
+      <th>Alerts Triggered</th>
+      <th>Maintenance Due</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let machine of machines; let i = index">
+      <td>{{ machine.id }} - {{ machine.name }}</td>
+      <td>{{ machine.line }}</td>
+      <td>
+        <span class="status" [ngClass]="getStatusClass(machine.status)">
+          {{ machine.status }}
+        </span>
+      </td>
+      <td>{{ machine.runningSince }}</td>
+      <td>{{ machine.uptime }}%</td>
+      <td>{{ machine.alerts }}</td>
+      <td>{{ machine.maintenanceDue }}</td>
+      <td>
+        <button class="edit-btn" (click)="openPopupForEdit(i)">Edit</button>
+        <button class="delete-btn" (click)="deleteMachine(i)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="machines.length === 0">No machines added yet.</p>
+
+<!-- Popup Modal -->
+<div class="modal" *ngIf="showPopup">
+  <div class="modal-content">
+    <h3>{{ isEditMode ? 'Edit Machine' : 'New Machine' }}</h3>
+
+    <form class="form-grid" (ngSubmit)="saveMachine()">
+
+      <div class="form-field">
+        <input [(ngModel)]="newMachine.id" name="id" placeholder=" " required />
+        <label>Machine ID</label>
+      </div>
+
+      <div class="form-field">
+        <input [(ngModel)]="newMachine.name" name="name" placeholder=" " required />
+        <label>Machine Name</label>
+      </div>
+
+      <div class="form-field">
+        <input [(ngModel)]="newMachine.line" name="line" placeholder=" " required />
+        <label>Line / Department</label>
+      </div>
+
+      <div class="form-field">
+        <select [(ngModel)]="newMachine.status" name="status" required>
+          <option value="" disabled selected hidden></option>
+          <option>Running</option>
+          <option>Idle</option>
+          <option>Maintenance</option>
+          <option>Breakdown</option>
+        </select>
+        <label>Status</label>
+      </div>
+
+      <div class="form-field">
+        <input type="datetime-local" [(ngModel)]="newMachine.runningSince" name="runningSince" placeholder=" " required />
+        <label>Running Since</label>
+      </div>
+
+      <div class="form-field">
+        <input [(ngModel)]="newMachine.uptime" name="uptime" type="number" placeholder=" " required />
+        <label>Uptime (%)</label>
+      </div>
+
+      <div class="form-field">
+        <input [(ngModel)]="newMachine.alerts" name="alerts" placeholder=" " />
+        <label>Alerts Triggered</label>
+      </div>
+
+      <div class="form-field">
+        <input type="date" [(ngModel)]="newMachine.maintenanceDue" name="maintenanceDue" placeholder=" " required />
+        <label>Maintenance Due Date</label>
+      </div>
+
+      <div class="form-buttons">
+        <button type="submit">{{ isEditMode ? 'Update Machine' : 'Add Machine' }}</button>
+        <button type="button" (click)="cancelPopup()">Cancel</button>
+      </div>
+    </form>
   </div>
-
-  
 </div>

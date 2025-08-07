@@ -17,7 +17,7 @@ import { ServiceChargesComponent } from './service-charges/service-charges.compo
 import { GlobalReviewEditComponent } from './global-review-edit/global-review-edit.component';
 import { ReviewNotificationComponent } from './review-notification/review-notification.component';
 import { SectorWiseComponent } from './sector-wise/sector-wise.component';
-import { ProductionplanningComponent } from './productionplanning/productionplanning.component';
+import { ProductionPlanningComponent } from './productionplanning/productionplanning.component';
 import { MachineMonitoringComponent } from './machinemonitoring/machinemonitoring.component';
 // In all files that import this component
 import { WorkOrderManagementComponent } from './workordermanagement/workordermanagement.component';
@@ -27,6 +27,7 @@ import { PreventivemaintenancemanagementComponent } from './preventivemaintenanc
 import { UserManagementComponent } from './usermanagement/usermanagement.component';
 import { ReportsandAnalyticsComponent } from './reportsandanalytics/reportsandanalytics.component';
 import { SettingsandMasterdataComponent } from './settingsandmasterdata/settingsandmasterdata.component';
+import { ProductionmonitoringComponent } from './productionmonitoring/productionmonitoring.component';
 
 
 
@@ -83,7 +84,11 @@ const routes: Routes = [
     },
     {
         path: 'productionplanning',
-        component: ProductionplanningComponent
+        component: ProductionPlanningComponent
+    },
+    {
+        path: 'productionmonitoring',
+        component: ProductionmonitoringComponent
     },
     {
         path: 'machinemonitoring',

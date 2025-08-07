@@ -1,36 +1,142 @@
-<div class="production-container">
-  <h2>Production Planning</h2>
+<h2>Production Planning</h2>
 
-  <table class="production-table">
-    <thead>
-      <tr>
-        <th>Order ID</th>
-        <th>Product Name / Code</th>
-        <th>Planned Quantity</th>
-        <th>Actual Quantity</th>
-        <th>Shift / Date / Time</th>
-        <th>Production Line</th>
-        <th>Assigned Operator</th>
-        <th>Target Time</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let plan of productionPlans">
-        <td>{{ plan.orderId }}</td>
-        <td>{{ plan.productName }}</td>
-        <td>{{ plan.plannedQty }}</td>
-        <td>{{ plan.actualQty }}</td>
-        <td>{{ plan.shift }}</td>
-        <td>{{ plan.productionLine }}</td>
-        <td>{{ plan.operator }}</td>
-        <td>{{ plan.targetTime }}</td>
-        <td>
-          <span class="status-badge {{ getStatusClass(plan.status) }}">
-            {{ plan.status }}
-          </span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<!-- New Plan Button -->
+<button (click)="openPopupForAdd()">+ New Plan</button>
+
+<!-- Plans Table -->
+<table *ngIf="plans.length > 0">
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Product</th>
+      <th>Planned Qty</th>
+      <th>Actual Qty</th>
+      <th>Shift</th>
+      <th>Assigned Operator</th>
+      <th>Assigned Supervisor</th>
+      <th>Date</th>
+      <th>Line</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let plan of plans; let i = index">
+      <td>{{ plan.orderId }}</td>
+      <td>{{ plan.product }}</td>
+      <td>{{ plan.plannedQty }}</td>
+      <td>{{ plan.actualQty }}</td>
+      <td>{{ plan.shift }}</td>
+      <td>{{ plan.assignedOperator}}</td>
+      <td>{{ plan.assignedSupervisor}}</td>
+      <td>{{ plan.date }}</td>
+      <td>{{ plan.line }}</td>
+      <td>
+        <span class="status" [ngClass]="plan.status.toLowerCase()">{{ plan.status }}</span>
+      </td>
+      <td>
+        <button class="edit-btn" (click)="openPopupForEdit(i)">Edit</button>
+        <button class="delete-btn" (click)="deletePlan(i)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="plans.length === 0">No production plans added yet.</p>
+
+<!-- Popup Modal -->
+<div class="modal" *ngIf="showPopup">
+  <div class="modal-content">
+    <h3>{{ isEditMode ? 'Edit Production Plan' : 'New Production Plan' }}</h3>
+
+    <!-- Floating Label Form -->
+    <form class="form-grid" (ngSubmit)="savePlan()">
+      <!-- Order ID -->
+      <div class="form-field">
+        <input [(ngModel)]="newPlan.orderId" name="orderId" placeholder=" " required />
+        <label>Order ID</label>
+      </div>
+
+      <!-- Product -->
+      <div class="form-field">
+        <input [(ngModel)]="newPlan.product" name="product" placeholder=" " required />
+        <label>Product Name / Code</label>
+      </div>
+
+      <!-- Planned Qty -->
+      <div class="form-field">
+        <input [(ngModel)]="newPlan.plannedQty" name="plannedQty" type="number" placeholder=" " required />
+        <label>Planned Qty</label>
+      </div>
+
+      <!-- Actual Qty -->
+      <div class="form-field">
+        <input [(ngModel)]="newPlan.actualQty" name="actualQty" type="number" placeholder=" " required />
+        <label>Actual Qty</label>
+      </div>
+
+      <!-- Shift -->
+      <div class="form-field">
+        <select [(ngModel)]="newPlan.shift" name="shift" required>
+          <option value="" disabled selected hidden></option>
+          <option>Shift A</option>
+          <option>Shift B</option>
+          <option>Shift C</option>
+        </select>
+        <label>Shift</label>
+      </div>
+      <div class="form-field">
+        <select [(ngModel)]="newPlan.assignedOperator" name="assignedOperator" required>
+          <option value="" disabled selected hidden></option>
+          <option>Ramu</option>
+          <option>Raju</option>
+          <option>Pavan</option>
+        </select>
+        <label>Assigned Operator</label>
+      </div>
+      <div class="form-field">
+        <select [(ngModel)]="newPlan.assignedSupervisor" name="assignedSupervisor" required>
+          <option value="" disabled selected hidden></option>
+          <option>Naga</option>
+          <option>Kumar</option>
+          <option>karthik</option>
+        </select>
+        <label>Assigned Supervisor</label>
+      </div>
+
+      <!-- Date -->
+      <div class="form-field">
+        <input type="date" [(ngModel)]="newPlan.date" name="date" placeholder=" " required />
+        <label>Date</label>
+      </div>
+
+      <!-- Line -->
+      <div class="form-field">
+        <select [(ngModel)]="newPlan.line" name="line" required>
+          <option value="" disabled selected hidden></option>
+          <option>Machine 1</option>
+          <option>Machine 2</option>
+          <option>Machine 3</option>
+        </select>
+        <label>Machine</label>
+      </div>
+
+      <!-- Status -->
+      <div class="form-field">
+        <select [(ngModel)]="newPlan.status" name="status" required>
+          <option value="" disabled selected hidden></option>
+          <option>Planned</option>
+          <option>In Progress</option>
+          <option>Completed</option>
+        </select>
+        <label>Status</label>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-buttons">
+        <button type="submit">{{ isEditMode ? 'Update Plan' : 'Add Plan' }}</button>
+        <button type="button" (click)="cancelPopup()">Cancel</button>
+      </div>
+    </form>
+  </div>
 </div>

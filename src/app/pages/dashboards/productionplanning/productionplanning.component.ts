@@ -1,70 +1,85 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+interface ProductionPlan {
+  orderId: string;
+  product: string;
+  plannedQty: number;
+  actualQty: number;
+  shift: string;
+  date: string;
+  line: string;
+  status: string;
+}
+
 @Component({
-  selector: 'app-productionplanning',
+  selector: 'app-production-planning',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './productionplanning.component.html',
   styleUrls: ['./productionplanning.component.css']
 })
-export class ProductionplanningComponent {
+export class ProductionPlanningComponent {
+  plans: ProductionPlan[] = [];
 
-  productionPlans = [
-    {
-      orderId: 'ORD-1001',
-      productName: 'Widget A / PROD-001',
-      plannedQty: 500,
-      actualQty: 480,
-      shift: 'Shift 1 / 2025-08-04 / 08:00 AM',
-      productionLine: 'Line-1',
-      operator: 'John Doe',
-      targetTime: '10:00 AM',
-      status: 'Planned'
-    },
-    {
-      orderId: 'ORD-1002',
-      productName: 'Widget B / PROD-002',
-      plannedQty: 300,
-      actualQty: 290,
-      shift: 'Shift 2 / 2025-08-04 / 02:00 PM',
-      productionLine: 'Line-2',
-      operator: 'Jane Smith',
-      targetTime: '06:00 PM',
-      status: 'In Progress'
-    },
-    {
-      orderId: 'ORD-1003',
-      productName: 'Widget C / PROD-003',
-      plannedQty: 400,
-      actualQty: 400,
-      shift: 'Shift 3 / 2025-08-05 / 10:00 PM',
-      productionLine: 'Line-3',
-      operator: 'Mike Johnson',
-      targetTime: '02:00 AM',
-      status: 'Completed'
-    },
-    // Duplicate entries for table filling
-    {
-      orderId: 'ORD-1001',
-      productName: 'Widget A / PROD-001',
-      plannedQty: 500,
-      actualQty: 480,
-      shift: 'Shift 1 / 2025-08-04 / 08:00 AM',
-      productionLine: 'Line-1',
-      operator: 'John Doe',
-      targetTime: '10:00 AM',
-      status: 'Planned'
-    }
-  ];
+  showPopup = false;
+  isEditMode = false;
+  editIndex: number | null = null;
 
-  getStatusClass(status: string): string {
-    switch (status.toLowerCase()) {
-      case 'planned': return 'status-planned';
-      case 'in progress': return 'status-in-progress';
-      case 'completed': return 'status-completed';
-      default: return '';
-    }
+  newPlan: ProductionPlan = this.getEmptyPlan();
+
+  // Open popup for new plan
+  openPopupForAdd() {
+    this.isEditMode = false;
+    this.newPlan = this.getEmptyPlan();
+    this.showPopup = true;
   }
 
+  // Open popup for edit
+  openPopupForEdit(index: number) {
+    this.isEditMode = true;
+    this.editIndex = index;
+    this.newPlan = { ...this.plans[index] };
+    this.showPopup = true;
+  }
+
+  // Save (Add or Edit)
+  savePlan() {
+    if (!this.newPlan.orderId || !this.newPlan.product) return;
+
+    if (this.isEditMode && this.editIndex !== null) {
+      this.plans[this.editIndex] = { ...this.newPlan };
+    } else {
+      this.plans.push({ ...this.newPlan });
+    }
+   console.log("plans",this.plans)
+    this.cancelPopup();
+  }
+
+  // Cancel popup
+  cancelPopup() {
+    this.newPlan = this.getEmptyPlan();
+    this.showPopup = false;
+    this.isEditMode = false;
+    this.editIndex = null;
+  }
+
+  // Delete plan
+  deletePlan(index: number) {
+    this.plans.splice(index, 1);
+  }
+
+  private getEmptyPlan(): ProductionPlan {
+    return {
+      orderId: '',
+      product: '',
+      plannedQty: 0,
+      actualQty: 0,
+      shift: 'Morning',
+      date: new Date().toISOString().substring(0, 10),
+      line: 'Line 1',
+      status: 'Planned'
+    };
+  }
 }

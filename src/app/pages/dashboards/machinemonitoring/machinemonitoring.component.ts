@@ -1,46 +1,90 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+interface Machine {
+  id: string;
+  name: string;
+  line: string;
+  status: string;
+  runningSince: string;
+  uptime: number;
+  alerts: string;
+  maintenanceDue: string;
+}
 
 @Component({
   selector: 'app-machine-monitoring',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './machinemonitoring.component.html',
-  styleUrls: ['./machinemonitoring.component.css'],
-  standalone: true
+  styleUrls: ['./machinemonitoring.component.css']
 })
 export class MachineMonitoringComponent {
-  machines = [
-    {
-      id: 'MC-1001',
-      department: 'Line A',
-      status: 'Running',
-      runningSince: new Date('2025-08-04T08:00:00'),
-      rpm: 1420,
-      temp: 68,
-      load: 75,
-      uptime: 98.5,
-      alerts: 0,
-      maintenanceDue: new Date('2025-08-10')
-    },
-    {
-      id: 'MC-1002',
-      department: 'Line B',
-      status: 'Idle',
-      runningSince: new Date('2025-08-04T06:30:00'),
-      rpm: 0,
-      temp: 40,
-      load: 5,
-      uptime: 82.1,
-      alerts: 2,
-      maintenanceDue: new Date('2025-08-12')
-    }
-  ];
+  machines: Machine[] = [];
 
-  formatDate(date: Date): string {
-    return date.toLocaleDateString('en-US', {
-      day: '2-digit',
-      month: 'short',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
+  showPopup = false;
+  isEditMode = false;
+  editIndex: number | null = null;
+
+  newMachine: Machine = this.getEmptyMachine();
+
+  // Open popup for new machine
+  openPopupForAdd() {
+    this.isEditMode = false;
+    this.newMachine = this.getEmptyMachine();
+    this.showPopup = true;
+  }
+
+  // Open popup for edit
+  openPopupForEdit(index: number) {
+    this.isEditMode = true;
+    this.editIndex = index;
+    this.newMachine = { ...this.machines[index] };
+    this.showPopup = true;
+  }
+
+  // Save (Add or Edit)
+  saveMachine() {
+    if (!this.newMachine.id || !this.newMachine.name) return;
+
+    if (this.isEditMode && this.editIndex !== null) {
+      this.machines[this.editIndex] = { ...this.newMachine };
+    } else {
+      this.machines.push({ ...this.newMachine });
+    }
+
+    this.cancelPopup();
+  }
+
+  // Cancel popup
+  cancelPopup() {
+    this.newMachine = this.getEmptyMachine();
+    this.showPopup = false;
+    this.isEditMode = false;
+    this.editIndex = null;
+  }
+
+  // Delete machine
+  deleteMachine(index: number) {
+    this.machines.splice(index, 1);
+  }
+
+  // Get status class for badge
+  getStatusClass(status: string): string {
+    return status.replace(/\s+/g, '-').toLowerCase();
+  }
+
+  private getEmptyMachine(): Machine {
+    return {
+      id: '',
+      name: '',
+      line: '',
+      status: 'Running',
+      runningSince: '',
+      uptime: 0,
+      alerts: '',
+      maintenanceDue: ''
+    };
   }
 }
