@@ -32,17 +32,10 @@ export class Login2Component implements OnInit {
   images = [
     
     // 'assets/images/AircraftFlight.png',
-    'assets/images/Flight38.jpeg',
-    'assets/images/flightwhite.jpeg',
-     'assets/images/flightAndSky.jpg',
-     'assets/images/flight_ground.jpg',
-    //  'assets/images/fightinground.jpg',
-    'assets/images/flightair.jpg',
-    //  'assets/images/boardingatflight.jpg',
-    // 'assets/images/boardingpass.jpg',
-    'assets/images/flightparking.jpg',
-    'assets/images/flightHalf.jpg',
-    'assets/images/aircraftinsky.png',
+    'assets/images/image (3).png',
+    'assets/images/image (2).png',
+     'assets/images/image.jpg',
+   
   ];
   currentIndex = 0;
   successMessage: string;

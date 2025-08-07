@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface ProductionPlan {
   orderId: string;
@@ -8,6 +8,8 @@ interface ProductionPlan {
   plannedQty: number;
   actualQty: number;
   shift: string;
+  assignedOperator: string;
+  assignedSupervisor: string;
   date: string;
   line: string;
   status: string;
@@ -16,7 +18,7 @@ interface ProductionPlan {
 @Component({
   selector: 'app-production-planning',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './productionplanning.component.html',
   styleUrls: ['./productionplanning.component.css']
 })
@@ -27,59 +29,68 @@ export class ProductionPlanningComponent {
   isEditMode = false;
   editIndex: number | null = null;
 
-  newPlan: ProductionPlan = this.getEmptyPlan();
+  planForm!: FormGroup;
 
-  // Open popup for new plan
+  constructor(private fb: FormBuilder) {
+    this.createForm();
+  }
+
+  createForm() {
+    this.planForm = this.fb.group({
+  orderId: ['', Validators.required],
+  product: ['', Validators.required],
+  plannedQty: ['', Validators.required],
+  actualQty: [''], // ✅ made optional
+  shift: ['', Validators.required],
+  assignedOperator: ['', Validators.required],
+  assignedSupervisor: ['', Validators.required],
+  date: [new Date().toISOString().substring(0, 10), Validators.required],
+  line: ['', Validators.required],
+  status: ['Planned', Validators.required]
+});
+
+
+  }
+
   openPopupForAdd() {
     this.isEditMode = false;
-    this.newPlan = this.getEmptyPlan();
+    this.createForm();
     this.showPopup = true;
   }
 
-  // Open popup for edit
   openPopupForEdit(index: number) {
     this.isEditMode = true;
     this.editIndex = index;
-    this.newPlan = { ...this.plans[index] };
+    const plan = this.plans[index];
+    this.planForm.setValue({ ...plan });
     this.showPopup = true;
   }
 
-  // Save (Add or Edit)
   savePlan() {
-    if (!this.newPlan.orderId || !this.newPlan.product) return;
+    if (this.planForm.invalid) {
+      this.planForm.markAllAsTouched();
+      return;
+    }
+
+    const plan: ProductionPlan = this.planForm.value;
 
     if (this.isEditMode && this.editIndex !== null) {
-      this.plans[this.editIndex] = { ...this.newPlan };
+      this.plans[this.editIndex] = { ...plan };
     } else {
-      this.plans.push({ ...this.newPlan });
+      this.plans.push({ ...plan });
     }
-   console.log("plans",this.plans)
+
     this.cancelPopup();
   }
 
-  // Cancel popup
   cancelPopup() {
-    this.newPlan = this.getEmptyPlan();
     this.showPopup = false;
     this.isEditMode = false;
     this.editIndex = null;
+    this.planForm.reset();
   }
 
-  // Delete plan
   deletePlan(index: number) {
     this.plans.splice(index, 1);
-  }
-
-  private getEmptyPlan(): ProductionPlan {
-    return {
-      orderId: '',
-      product: '',
-      plannedQty: 0,
-      actualQty: 0,
-      shift: 'Morning',
-      date: new Date().toISOString().substring(0, 10),
-      line: 'Line 1',
-      status: 'Planned'
-    };
   }
 }
