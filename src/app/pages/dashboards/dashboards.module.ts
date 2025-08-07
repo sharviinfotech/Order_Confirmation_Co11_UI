@@ -7,7 +7,7 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 
 import { DashboardsRoutingModule } from './dashboards-routing.module';
 
-// Standalone components (import only)
+// Standalone components (imported ONLY, not declared)
 import { MachineMonitoringComponent } from './machinemonitoring/machinemonitoring.component';
 import { RawmaterialmanagementComponent } from './inventory/rawmaterialmanagement/rawmaterialmanagement.component';
 import { QualitycontrolComponent } from './qualitycontrol/qualitycontrol.component';
@@ -17,14 +17,11 @@ import { ReportsandAnalyticsComponent } from './reportsandanalytics/reportsandan
 import { SettingsandMasterdataComponent } from './settingsandmasterdata/settingsandmasterdata.component';
 import { ProductionPlanningComponent } from './productionplanning/productionplanning.component';
 import { ProductionmonitoringComponent } from './productionmonitoring/productionmonitoring.component';
-
+import { OperatorDashboardComponent } from './operatordashboard/operatordashboard.component';
 
 @NgModule({
-  declarations: [
-    // NO declarations — all components are standalone
-  
-   
-  ],
+  // ❌ No declarations for standalone components
+  declarations: [],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -32,7 +29,7 @@ import { ProductionmonitoringComponent } from './productionmonitoring/production
     BsDatepickerModule.forRoot(),
     NgxSpinnerModule,
 
-    // Standalone components
+    // ✅ Standalone components only go in imports
     MachineMonitoringComponent,
     RawmaterialmanagementComponent,
     QualitycontrolComponent,
@@ -41,10 +38,9 @@ import { ProductionmonitoringComponent } from './productionmonitoring/production
     ReportsandAnalyticsComponent,
     SettingsandMasterdataComponent,
     ProductionPlanningComponent,
-    
-    
-   
+    ProductionmonitoringComponent,
+    OperatorDashboardComponent
   ],
   providers: [BsDropdownConfig]
 })
-export class DashboardsModule {}
+export class DashboardsModule { }

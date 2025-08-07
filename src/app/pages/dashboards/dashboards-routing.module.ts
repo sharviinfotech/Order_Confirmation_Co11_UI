@@ -28,6 +28,7 @@ import { UserManagementComponent } from './usermanagement/usermanagement.compone
 import { ReportsandAnalyticsComponent } from './reportsandanalytics/reportsandanalytics.component';
 import { SettingsandMasterdataComponent } from './settingsandmasterdata/settingsandmasterdata.component';
 import { ProductionmonitoringComponent } from './productionmonitoring/productionmonitoring.component';
+import { OperatorDashboardComponent } from './operatordashboard/operatordashboard.component';
 
 
 
@@ -89,6 +90,10 @@ const routes: Routes = [
     {
         path: 'productionmonitoring',
         component: ProductionmonitoringComponent
+    },
+     {
+        path: 'operatordashboard',
+        component: OperatorDashboardComponent
     },
     {
         path: 'machinemonitoring',

@@ -85,6 +85,13 @@ export const MENU: MenuItem[] = [
                 parentId: 1,
                 icon: 'bx bx-receipt',
             },
+                        {
+                id: 9,
+                label: 'Operator dashboard',
+                link: '/operatordashboard',
+                parentId: 1,
+                icon: 'bx bx-receipt',
+            },
             {
                 id: 9,
                 label: 'Machine Monitoring',
