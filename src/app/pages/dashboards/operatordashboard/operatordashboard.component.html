@@ -1,55 +1,153 @@
-<!-- <div class="dashboard-container">
+<div class="dashboard">
   <div class="header">
-    <p>Operator: <strong>{{ operatorName }}</strong></p>
-    <p>Time: {{ time }}</p>
+    <div>
+      <strong>Operator:</strong> ALEXANDER, JEREMY
+    </div>
+    <div>
+      <strong>Time:</strong> 04-12-2019 06:18:43 PM
+    </div>
     <div class="buttons">
-      <button>End Of Shift</button>
-      <button>Empty Lift</button>
-      <button>Break</button>
-      <button>Scrap</button>
-      <button>OEE</button>
-      <button>Breakdown</button>
+      <button class="btn btn-primary">End Of Shift</button>
+      <button class="btn btn-primary">Empty Lift</button>
+      <button class="btn btn-primary">Break</button>
+      <button class="btn btn-primary">Scrap</button>
+      <button class="btn btn-primary">OEE</button>
+      <button class="btn btn-primary">Breakdown</button>
     </div>
   </div>
 
-  <div class="info-section">
-    <div class="left-info">
-      <p><strong>PRODUCT CODE:</strong> {{ productCode }}</p>
-      <p><strong>DESCRIPTION:</strong> {{ description }}</p>
-      <p><strong>SCRAP:</strong> {{ scrap }}</p>
-      <p><strong>WORK ORDER:</strong> {{ workOrder }}</p>
-      <p><strong>DOWNTIME:</strong> {{ downtime }}</p>
-      <p><strong>PERFORMANCE:</strong> {{ performance }}%</p>
-
-      <div class="order-stats">
-        <p>Good Parts: {{ goodParts }}</p>
-        <p>Remaining: {{ remaining }}</p>
-        <p>Total Order: {{ totalOrder }}</p>
-      </div>
-
-      <div class="metrics">
-        <p>Max lifts/hr: Std {{ maxLifts }}</p>
-        <p>Shuttle Time: Std {{ shuttleTime }}</p>
-        <p>Shift Qty: {{ shiftQty }}</p>
-        <p>Estimated finish time: {{ estimatedFinishTime }}</p>
-      </div>
+  <div class="section product-info">
+    <div>
+      <label>Product Code:</label>
+      <select>
+        <option>1-F70-0381</option>
+      </select>
     </div>
-
-    <div class="right-info">
-      <div class="machine-status">
-        <p><strong>Machine: {{ machine }}</strong></p>
-        <div class="status-circle"></div>
-        <p>Tool Run: {{ toolRun }}</p>
-        <p>OEE: {{ oee }}</p>
-        <p>No. of Cavities: {{ cavities }}</p>
-      </div>
+    <div>
+      <label>Description:</label>
+      <input type="text" value="FP206 Thin E105"/>
     </div>
+    <div>
+      <label>Scrap:</label>
+      <input type="text" value="0"/>
+    </div>
+    <div>
+      <label>Work Order:</label>
+      <input type="text" value="W0098214"/>
+    </div>
+    <div>
+      <label>Downtime:</label>
+      <input type="text" value="10:35:55"/>
+    </div>
+    <div>
+      <label>Performance:</label>
+      <input type="text" value="0.0%"/>
+    </div>
+  </div>
+
+  <div class="section stats">
+    <div><strong>Good Parts:</strong>   
+       <input type="text" value=""/>
+    </div>
+    <div><strong>Remaining:</strong>
+         <input type="text" value=""/> 
+    </div>
+    <div><strong>Total Order:</strong>
+        <input type="text" value=""/> 
+    </div>
+  </div>
+
+  <div class="section machine-box">
+    <div><strong>Machine:</strong>
+       <input type="text" value=""/>
+       </div>
+    <div class="circle"></div>
+  </div>
+
+  <div class="section bottom-stats">
+    <div><label>Max lifts/hr:</label>
+     <input type="text" value=""/>
+     </div>
+    <div><label>Shuttle Time:</label></div>
+       <input type="text" value=""/>
+    <div><label>Shift Qty:</label>
+       <input type="text" value=""/>
+       </div>
+    <div></div><label>Finish Time:</label> 05-12-2019 12:37:41 AM
+       <input type="text" value=""/>
+       <!-- </div> -->
+    <div><label>Tool Run:</label>
+       <input type="text" value=""/>
+       </div>
+    <div><label>OEE:</label>
+       <input type="text" value=""/>
+       </div>
+    <div><label>No. of Cavities:</label>
+       <input type="text" value=""/>
+       </div>
   </div>
 
   <div class="timeline">
-    <p><strong>Job Timeline</strong></p>
+    <strong>Job Timeline:</strong>
     <div class="timeline-bar">
-      <div *ngFor="let item of jobTimeline" [ngClass]="item.status">{{ item.time }}</div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+      <div class="block stopped"></div>
+      <div class="block stopped"></div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+      <div class="block stopped"></div>
+      <div class="block running"></div>
+      <div class="block stopped"></div>
+      <div class="block stopped"></div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+      <div class="block stopped"></div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+      <div class="block running"></div>
+    </div>
+    <div class="timeline-labels">
+      <span>07 PM</span>
+      <span>08 PM</span>
+      <span>09 PM</span>
+      <span>10 PM</span>
+      <span>11 PM</span>
+      <span>12 AM</span>
+      <span>01 AM</span>
+      <span>02 AM</span>
+      <span>03 AM</span>
+      <span>04 AM</span>
+      <span>05 AM</span>
+      <span>06 AM</span>
+      <span>07 AM</span>
+      <span>08 AM</span> 
+      <span>09 AM</span>
+      <span>10 AM</span>
+      <span>11 AM</span>
+      <span>12 PM</span>
+      <span>01 PM</span>
+      <span>02 PM</span>
+      <span>03 PM</span>
+      <span>04 PM</span>
+      <span>05 PM</span>
+      <span>06 PM</span>
     </div>
   </div>
-</div> -->
+</div>
