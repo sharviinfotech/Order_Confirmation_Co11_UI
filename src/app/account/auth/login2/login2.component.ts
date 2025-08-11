@@ -33,8 +33,9 @@ export class Login2Component implements OnInit {
     
     // 'assets/images/AircraftFlight.png',
     'assets/images/image (3).png',
-    'assets/images/image (2).png',
-     'assets/images/image.jpg',
+    'assets/images/machine1.jpg',
+     'assets/images/machine4.jpg',
+     'assets/images/machine3.jpg',
    
   ];
   currentIndex = 0;

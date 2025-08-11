@@ -29,6 +29,7 @@ import { ReportsandAnalyticsComponent } from './reportsandanalytics/reportsandan
 import { SettingsandMasterdataComponent } from './settingsandmasterdata/settingsandmasterdata.component';
 import { ProductionmonitoringComponent } from './productionmonitoring/productionmonitoring.component';
 import { OperatorDashboardComponent } from './operatordashboard/operatordashboard.component';
+import { ProductionIntegrationWithERPComponent } from './productionintegrationwith-erp/productionintegrationwith-erp.component';
 
 
 
@@ -90,6 +91,10 @@ const routes: Routes = [
     {
         path: 'productionmonitoring',
         component: ProductionmonitoringComponent
+    },
+    {
+        path: 'productionintegrationwithERP',
+        component: ProductionIntegrationWithERPComponent
     },
      {
         path: 'operatordashboard',

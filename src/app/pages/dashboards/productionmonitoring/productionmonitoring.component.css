@@ -4,3 +4,12 @@ h2 {
   font-weight: 600;
   color: #2c3e50;
 }
+
+.table {
+  background: white;
+}
+
+input.form-control {
+  padding: 4px;
+  font-size: 0.9rem;
+}

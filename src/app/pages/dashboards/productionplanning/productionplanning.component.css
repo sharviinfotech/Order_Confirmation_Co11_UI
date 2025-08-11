@@ -184,3 +184,10 @@ tbody tr:hover {
   font-size: 12px;
   margin-top: 4px;
 }
+
+/* ✅ Make From Date & To Date side-by-side */
+.date-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}

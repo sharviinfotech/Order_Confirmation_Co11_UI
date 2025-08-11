@@ -1,4 +1,4 @@
-<h2 >Production Monitoring</h2>
+<h2>Production Monitoring</h2>
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
@@ -12,24 +12,55 @@
       <th>Date</th>
       <th>Line</th>
       <th>Status</th>
-      
+      <th>Posting Date</th>
+      <th>Runtime</th>
+      <th>Downtime</th>
+      <th>Actions</th>
     </tr>
   </thead>
+
   <tbody>
-    <tr *ngFor="let plan of plans; let i = index">
-      <td>{{ plan.orderId }}</td>
-      <td>{{ plan.product }}</td>
-      <td>{{ plan.plannedQty }}</td>
-      <td>{{ plan.actualQty }}</td>
-      <td>{{ plan.shift }}</td>
-      <td>{{ plan.assignedOperator}}</td>
-      <td>{{ plan.assignedSupervisor}}</td>
-      <td>{{ plan.date }}</td>
-      <td>{{ plan.line }}</td>
+    <tr *ngFor="let plan of plans; let i = index" [formGroup]="plan">
+      <td>{{ plan.get('orderId')?.value }}</td>
+      <td>{{ plan.get('product')?.value }}</td>
+      <td>{{ plan.get('plannedQty')?.value }}</td>
+
+      <!-- Actual Qty -->
       <td>
-        <span class="status" [ngClass]="plan.status.toLowerCase()">{{ plan.status }}</span>
+        <input *ngIf="editingIndex === i" type="number" formControlName="actualQty" class="form-control">
+        <span *ngIf="editingIndex !== i">{{ plan.get('actualQty')?.value }}</span>
       </td>
-      
+
+      <td>{{ plan.get('shift')?.value }}</td>
+      <td>{{ plan.get('assignedOperator')?.value }}</td>
+      <td>{{ plan.get('assignedSupervisor')?.value }}</td>
+      <td>{{ plan.get('date')?.value }}</td>
+      <td>{{ plan.get('line')?.value }}</td>
+      <td>{{ plan.get('status')?.value }}</td>
+
+      <!-- Posting Date -->
+      <td>
+        <input *ngIf="editingIndex === i" type="date" formControlName="postingDate" class="form-control">
+        <span *ngIf="editingIndex !== i">{{ plan.get('postingDate')?.value }}</span>
+      </td>
+
+      <!-- Runtime -->
+      <td>
+        <input *ngIf="editingIndex === i" type="number" formControlName="runtime" class="form-control">
+        <span *ngIf="editingIndex !== i">{{ plan.get('runtime')?.value }}</span>
+      </td>
+
+      <!-- Downtime -->
+      <td>
+        <input *ngIf="editingIndex === i" type="number" formControlName="downtime" class="form-control">
+        <span *ngIf="editingIndex !== i">{{ plan.get('downtime')?.value }}</span>
+      </td>
+
+      <!-- Actions -->
+      <td>
+        <button *ngIf="editingIndex !== i" class="btn btn-primary btn-sm" (click)="editRow(i)">Edit</button>
+        <button *ngIf="editingIndex === i" class="btn btn-success btn-sm" (click)="saveRow(i)">Save</button>
+      </td>
     </tr>
   </tbody>
 </table>

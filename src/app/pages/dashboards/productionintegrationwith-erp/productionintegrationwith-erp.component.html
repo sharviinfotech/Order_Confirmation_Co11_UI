@@ -1,0 +1,66 @@
+
+
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-section">
+      <h2>Production Integration with ERP</h2>
+      <div class="form-group" *ngFor="let field of [
+          { name: 'orderId', label: 'Order ID' },
+          { name: 'product', label: 'Product' },
+          { name: 'plannedQty', label: 'Planned Qty' },
+          { name: 'actualQty', label: 'Actual Qty' },
+          { name: 'shift', label: 'Shift' },
+          { name: 'assignedOperator', label: 'Assigned Operator' },
+          { name: 'assignedSupervisor', label: 'Assigned Supervisor' },
+          { name: 'Machine', label: 'Machine' },
+          { name: 'status', label: 'Status' }
+        ]">
+        <div class="input-container">
+          <input
+            type="text"
+            [formControlName]="field.name"
+            required
+            class="form-input"
+            placeholder=" "
+          />
+          <label class="form-label">{{ field.label }}</label>
+        </div>
+        <div class="error" *ngIf="form.get(field.name)?.touched && form.get(field.name)?.invalid">
+          {{ field.label }} is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h2>Goods Movement</h2>
+      <div class="form-group" *ngFor="let field of [
+          { name: 'plant', label: 'Plant' },
+          { name: 'productCode', label: 'Product Code' },
+          { name: 'productDescription', label: 'Product Description' },
+          { name: 'movementType', label: 'Movement Type' },
+          { name: 'sloc', label: 'Sloc' },
+          { name: 'goodsActualQty', label: 'Actual Qty' },
+          { name: 'batch', label: 'Batch' },
+          { name: 'valuationType', label: 'Valuation Type' }
+        ]">
+        <div class="input-container">
+          <input
+            type="text"
+            [formControlName]="field.name"
+            required
+            class="form-input"
+            placeholder=" "
+          />
+          <label class="form-label">{{ field.label }}</label>
+        </div>
+        <div class="error" *ngIf="form.get(field.name)?.touched && form.get(field.name)?.invalid">
+          {{ field.label }} is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="submit-btn">Submit</button>
+    </div>
+  </form>
+</div>

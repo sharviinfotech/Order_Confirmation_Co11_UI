@@ -10,7 +10,8 @@ interface ProductionPlan {
   shift: string;
   assignedOperator: string;
   assignedSupervisor: string;
-  date: string;
+  date: string;   // From Date
+  toDate: string; // To Date
   line: string;
   status: string;
 }
@@ -36,20 +37,20 @@ export class ProductionPlanningComponent {
   }
 
   createForm() {
+    const today = new Date().toISOString().substring(0, 10);
     this.planForm = this.fb.group({
-  orderId: ['', Validators.required],
-  product: ['', Validators.required],
-  plannedQty: ['', Validators.required],
-  actualQty: [''], // ✅ made optional
-  shift: ['', Validators.required],
-  assignedOperator: ['', Validators.required],
-  assignedSupervisor: ['', Validators.required],
-  date: [new Date().toISOString().substring(0, 10), Validators.required],
-  line: ['', Validators.required],
-  status: ['Planned', Validators.required]
-});
-
-
+      orderId: ['', Validators.required],
+      product: ['', Validators.required],
+      plannedQty: ['', Validators.required],
+      actualQty: [''], // optional
+      shift: ['', Validators.required],
+      assignedOperator: ['', Validators.required],
+      assignedSupervisor: ['', Validators.required],
+      date: [today, Validators.required],    // From Date
+      toDate: [today, Validators.required],  // To Date
+      line: ['', Validators.required],
+      status: ['Planned', Validators.required]
+    });
   }
 
   openPopupForAdd() {

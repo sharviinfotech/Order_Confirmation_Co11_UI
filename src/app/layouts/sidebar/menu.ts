@@ -85,6 +85,13 @@ export const MENU: MenuItem[] = [
                 parentId: 1,
                 icon: 'bx bx-receipt',
             },
+             {
+                id: 9,
+                label: 'Production Integration With ERP',
+                link: '/productionintegrationwithERP',
+                parentId: 1,
+                icon: 'bx bx-receipt',
+            },
                         {
                 id: 9,
                 label: 'Operator dashboard',

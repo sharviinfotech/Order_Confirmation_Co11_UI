@@ -18,10 +18,14 @@ import { SettingsandMasterdataComponent } from './settingsandmasterdata/settings
 import { ProductionPlanningComponent } from './productionplanning/productionplanning.component';
 import { ProductionmonitoringComponent } from './productionmonitoring/productionmonitoring.component';
 import { OperatorDashboardComponent } from './operatordashboard/operatordashboard.component';
+import { ProductionIntegrationWithERPComponent } from './productionintegrationwith-erp/productionintegrationwith-erp.component';
+
 
 @NgModule({
   // ❌ No declarations for standalone components
-  declarations: [],
+  declarations: [
+  
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
