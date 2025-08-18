@@ -1,16 +1,21 @@
-import { Component } from '@angular/core';
+import {
+  AfterViewChecked,
+  Component,
+  ViewChild,
+  ElementRef
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Chart, ChartConfiguration } from 'chart.js/auto';
 
-interface Machine {
-  id: string;
-  name: string;
-  line: string;
-  status: string;
-  runningSince: string;
-  uptime: number;
-  alerts: string;
-  maintenanceDue: string;
+interface DailyCard {
+  date: Date;
+  orderId: string;
+  productCode: string;
+  productDescription: string;
+  totalRunTime: string;
+  downTime: string;
+  oee: string;
 }
 
 @Component({
@@ -20,71 +25,172 @@ interface Machine {
   templateUrl: './machinemonitoring.component.html',
   styleUrls: ['./machinemonitoring.component.css']
 })
-export class MachineMonitoringComponent {
-  machines: Machine[] = [];
+export class MachineMonitoringComponent implements AfterViewChecked {
+  selection: string = '';
+  selectedOrderId: string = '';
 
-  showPopup = false;
-  isEditMode = false;
-  editIndex: number | null = null;
+  orderIds: string[] = ['ORD-1001', 'ORD-1002', 'ORD-1003'];
 
-  newMachine: Machine = this.getEmptyMachine();
+  machine = {
+    image: 'assets/images/Machinescreen.jpeg',
+    state: 'RUN',
+    stateTime: '27/07/2023 19:19:42',
+    productionToday: 14000,
+    productionWeek: 49983,
+    productionMonth: 262956,
+    shift: 'Shift 1',
+    runTime: '11:43 hr',
+    idleTime: '07:45 hr',
+    offTime: '00:00 hr'
+  };
 
-  // Open popup for new machine
-  openPopupForAdd() {
-    this.isEditMode = false;
-    this.newMachine = this.getEmptyMachine();
-    this.showPopup = true;
+  fromDate: string = '';
+  toDate: string = '';
+  dailyCards: DailyCard[] = [];
+
+  private machineOperationLabels = ['Jul 24', 'Jul 25', 'Jul 26', 'Jul 27'];
+  private runTimeData = [400, 300, 500, 600];
+  private idleTimeData = [100, 200, 150, 120];
+
+  private productionLabels = ['Jul 24', 'Jul 25', 'Jul 26', 'Jul 27'];
+  private productionData = [9000, 4000, 12000, 6000];
+
+  private machineChartRendered = false;
+  private productionChartRendered = false;
+
+  private machineChartInstance: Chart | null = null;
+  private productionChartInstance: Chart | null = null;
+
+  ngAfterViewChecked(): void {
+    if (
+      this.selection === 'with' &&
+      this.selectedOrderId &&
+      !this.machineChartRendered
+    ) {
+      this.initMachineOperationChart();
+      this.initProductionChart();
+      this.machineChartRendered = true;
+      this.productionChartRendered = true;
+    }
   }
 
-  // Open popup for edit
-  openPopupForEdit(index: number) {
-    this.isEditMode = true;
-    this.editIndex = index;
-    this.newMachine = { ...this.machines[index] };
-    this.showPopup = true;
-  }
+  resetCharts(): void {
+    this.machineChartRendered = false;
+    this.productionChartRendered = false;
 
-  // Save (Add or Edit)
-  saveMachine() {
-    if (!this.newMachine.id || !this.newMachine.name) return;
-
-    if (this.isEditMode && this.editIndex !== null) {
-      this.machines[this.editIndex] = { ...this.newMachine };
-    } else {
-      this.machines.push({ ...this.newMachine });
+    if (this.machineChartInstance) {
+      this.machineChartInstance.destroy();
+      this.machineChartInstance = null;
     }
 
-    this.cancelPopup();
+    if (this.productionChartInstance) {
+      this.productionChartInstance.destroy();
+      this.productionChartInstance = null;
+    }
   }
 
-  // Cancel popup
-  cancelPopup() {
-    this.newMachine = this.getEmptyMachine();
-    this.showPopup = false;
-    this.isEditMode = false;
-    this.editIndex = null;
+  private initMachineOperationChart(): void {
+    const ctx = document.getElementById(
+      'machineOperationChart'
+    ) as HTMLCanvasElement;
+    if (!ctx) return;
+
+    this.machineChartInstance = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: this.machineOperationLabels,
+        datasets: [
+          {
+            label: 'RUN Time (mins)',
+            data: this.runTimeData,
+            backgroundColor: 'green'
+          },
+          {
+            label: 'IDLE Time (mins)',
+            data: this.idleTimeData,
+            backgroundColor: 'orange'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          title: { display: true, text: 'Machine Operation Trend' }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: 'Minutes' }
+          }
+        }
+      }
+    });
   }
 
-  // Delete machine
-  deleteMachine(index: number) {
-    this.machines.splice(index, 1);
+  private initProductionChart(): void {
+    const ctx = document.getElementById(
+      'productionChart'
+    ) as HTMLCanvasElement;
+    if (!ctx) return;
+
+    this.productionChartInstance = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: this.productionLabels,
+        datasets: [
+          {
+            label: 'Production (meters)',
+            data: this.productionData,
+            backgroundColor: 'blue'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          title: { display: true, text: 'Production in meters' }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: 'Meters' }
+          }
+        }
+      }
+    });
   }
 
-  // Get status class for badge
-  getStatusClass(status: string): string {
-    return status.replace(/\s+/g, '-').toLowerCase();
+  private getDatesBetween(start: Date, end: Date): Date[] {
+    const dates: Date[] = [];
+    let current = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+    const last = new Date(end.getFullYear(), end.getMonth(), end.getDate());
+    while (current <= last) {
+      dates.push(new Date(current));
+      current.setDate(current.getDate() + 1);
+    }
+    return dates;
   }
 
-  private getEmptyMachine(): Machine {
-    return {
-      id: '',
-      name: '',
-      line: '',
-      status: 'Running',
-      runningSince: '',
-      uptime: 0,
-      alerts: '',
-      maintenanceDue: ''
-    };
+  onDateChange(): void {
+    this.dailyCards = [];
+    if (this.fromDate && this.toDate) {
+      const start = new Date(this.fromDate);
+      const end = new Date(this.toDate);
+      if (start > end) return;
+
+      const dateList = this.getDatesBetween(start, end);
+
+      this.dailyCards = dateList.map(date => ({
+        date,
+        orderId: `ORD-${date.getDate()}`,
+        productCode: `PCODE-${date.getDate()}`,
+        productDescription: `Description for ${date.toDateString()}`,
+        totalRunTime: `${Math.floor(Math.random() * 8) + 1}h`,
+        downTime: `${Math.floor(Math.random() * 3)}h`,
+        oee: `${Math.floor(Math.random() * 100)}%`
+      }));
+    }
   }
 }
