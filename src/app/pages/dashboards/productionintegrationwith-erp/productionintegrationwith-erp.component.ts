@@ -1,48 +1,49 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-productionintegrationiwith-erp',
+  selector: 'app-production-integration-tables',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule],
   templateUrl: './productionintegrationwith-erp.component.html',
   styleUrls: ['./productionintegrationwith-erp.component.css']
 })
-export class ProductionIntegrationWithERPComponent implements OnInit {
-  form!: FormGroup;
+export class ProductionIntegrationWithERPComponent {
+  // Sample left table data (ERP Integration)
+  erpRows = [
+    {
+      orderId: '1001', product: 'Prod A', plannedQty: 50, shift: 'A',
+      assignedOperator: 'Ramu', assignedSupervisor: 'Kumar',
+      machine: 'Machine 1', actualQty: 45, status: 'Completed',
+      postingDate: '2025-08-12', runtime: '5h', downtime: '1h'
+    },
+    {
+      orderId: '1002', product: 'Prod B', plannedQty: 30, shift: 'B',
+      assignedOperator: 'Raju', assignedSupervisor: 'Suresh',
+      machine: 'Machine 2', actualQty: 25, status: 'In Progress',
+      postingDate: '', runtime: '', downtime: ''
+    }
+  ];
 
-  constructor(private fb: FormBuilder) {}
+  // Sample right table data (Goods Movement)
+  goodsRows = [
+    {
+      plant: 'Plant A', productCode: 'P001', productDescription: 'Description 1',
+      movementType: '101', sloc: 'S1', actualQty: 45,
+      batch: 'B001', valuationType: 'Standard'
+    },
+    {
+      plant: 'Plant B', productCode: 'P002', productDescription: 'Description 2',
+      movementType: '102', sloc: 'S2', actualQty: 25,
+      batch: 'B002', valuationType: 'Average'
+    }
+  ];
 
-  ngOnInit(): void {
-    this.form = this.fb.group({
-      orderId: ['', Validators.required],
-      product: ['', Validators.required],
-      plannedQty: ['', Validators.required],
-      actualQty: ['', Validators.required],
-      shift: ['', Validators.required],
-      assignedOperator: ['', Validators.required],
-      assignedSupervisor: ['', Validators.required],
-      Machine: ['', Validators.required],
-      status: ['', Validators.required],
-      plant: ['', Validators.required],
-      productCode: ['', Validators.required],
-      productDescription: ['', Validators.required],
-      movementType: ['', Validators.required],
-      sloc: ['', Validators.required],
-      goodsActualQty: ['', Validators.required],
-      batch: ['', Validators.required],
-      valuationType: ['', Validators.required]
-    });
+  editERP(row: any) {
+    console.log('Edit ERP row', row);
   }
 
-  onSubmit(): void {
-    if (this.form.valid) {
-      alert('Form Submitted Successfully');
-      console.log(this.form.value);
-    } else {
-      this.form.markAllAsTouched();
-    }
+  deleteERP(row: any) {
+    console.log('Delete ERP row', row);
   }
 }

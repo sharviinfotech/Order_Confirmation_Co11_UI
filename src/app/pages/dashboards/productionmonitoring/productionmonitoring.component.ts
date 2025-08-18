@@ -22,7 +22,7 @@ export class ProductionmonitoringComponent {
         actualQty: 0,
         shift: 'Shift B',
         date: '2025-08-06',
-        line: 'Machine 1',
+        machine: 'Machine 1',
         status: 'Planned',
         assignedOperator: 'Ramu',
         assignedSupervisor: 'Kumar',
@@ -37,7 +37,7 @@ export class ProductionmonitoringComponent {
         actualQty: 0,
         shift: 'Shift B',
         date: '2025-08-06',
-        line: 'Machine 2',
+        machine: 'Machine 2',
         status: 'In Progress',
         assignedOperator: 'Raju',
         assignedSupervisor: 'Karthik',
@@ -48,22 +48,23 @@ export class ProductionmonitoringComponent {
     ];
 
     this.plansForm = this.fb.array(
-      plans.map(p => this.fb.group({
-        orderId: [p.orderId],
-        product: [p.product],
-        plannedQty: [p.plannedQty],
-        actualQty: [p.actualQty],
-        shift: [p.shift],
-        date: [p.date],
-        line: [p.line],
-        status: [p.status],
-        assignedOperator: [p.assignedOperator],
-        assignedSupervisor: [p.assignedSupervisor],
-        postingDate: [p.postingDate],
-        runtime: [p.runtime],
-        downtime: [p.downtime]
-      }))
-    );
+  plans.map(p => this.fb.group({
+    orderId: [p.orderId],
+    product: [p.product],
+    plannedQty: [p.plannedQty],
+    shift: [p.shift],
+    assignedOperator: [p.assignedOperator],
+    assignedSupervisor: [p.assignedSupervisor],
+    date: [p.date],
+    machine: [p.machine],
+    actualQty: [p.actualQty], // ✅ moved after line
+    status: [p.status],
+    postingDate: [p.postingDate],
+    runtime: [p.runtime],
+    downtime: [p.downtime]
+  }))
+);
+
   }
 
   get plans() {

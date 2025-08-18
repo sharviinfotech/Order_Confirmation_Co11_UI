@@ -1,153 +1,148 @@
-<div class="dashboard">
-  <div class="header">
-    <div>
-      <strong>Operator:</strong> ALEXANDER, JEREMY
+<form class="page" [formGroup]="form" (ngSubmit)="saveData()">
+  <!-- top info row -->
+  <div class="top-row">
+    <div class="left">
+      <span class="muted">Operator :</span>
+      <input type="text" class="pill pill-select" formControlName="operator" />
     </div>
-    <div>
-      <strong>Time:</strong> 04-12-2019 06:18:43 PM
-    </div>
-    <div class="buttons">
-      <button class="btn btn-primary">End Of Shift</button>
-      <button class="btn btn-primary">Empty Lift</button>
-      <button class="btn btn-primary">Break</button>
-      <button class="btn btn-primary">Scrap</button>
-      <button class="btn btn-primary">OEE</button>
-      <button class="btn btn-primary">Breakdown</button>
+    <div class="right">
+      <span class="muted">Time :</span>
+      <span class="strong">{{ now | date:'dd-MM-yyyy hh:mm:ss a' }}</span>
     </div>
   </div>
 
-  <div class="section product-info">
-    <div>
-      <label>Product Code:</label>
-      <select>
-        <option>1-F70-0381</option>
-      </select>
+  <!-- action buttons -->
+  <div class="actions">
+    <button class="btn" type="button" (click)="endOfShift()">End Of Shift</button>
+    <button class="btn" type="button" (click)="emptyLift()">Empty Lift</button>
+    <button class="btn" type="button" (click)="takeBreak()">Break</button>
+    <button class="btn" type="button" (click)="recordScrap()">Scrap</button>
+    <button class="btn" type="button" (click)="calculateOEE()">OEE</button>
+    <button class="btn" type="button" (click)="breakdown()">Breakdown</button>
+
+    <!-- SAVE (submits the form) -->
+    <button class="btn save" type="submit">Save</button>
+  </div>
+
+  <!-- main grid -->
+  <div class="main-grid">
+    <!-- left details -->
+    <div class="panel fields-grid">
+      <div class="field">
+        <div class="label">PRODUCT CODE :</div>
+        <input class="pill pill-select" formControlName="productCode" />
+      </div>
+      <div class="field">
+        <div class="label">DESCRIPTION :</div>
+        <input class="pill pill-select" formControlName="description" />
+      </div>
+      <div class="field">
+        <div class="label">SCRAP :</div>
+        <input class="pill pill-select" formControlName="scrap" type="number" />
+      </div>
+      <div class="field">
+        <div class="label">WORK ORDER :</div>
+        <input class="pill strong" formControlName="workOrder" />
+      </div>
+      <div class="field">
+        <div class="label">DOWNTIME :</div>
+        <input class="pill pill-select" formControlName="downtime" />
+      </div>
+      <div class="field">
+        <div class="label">PERFORMANCE :</div>
+        <div class="perf-row">
+          <input class="pill pill-select" formControlName="performance" type="number" />
+          <span>%</span>
+        </div>
+      </div>
     </div>
-    <div>
-      <label>Description:</label>
-      <input type="text" value="FP206 Thin E105"/>
-    </div>
-    <div>
-      <label>Scrap:</label>
-      <input type="text" value="0"/>
-    </div>
-    <div>
-      <label>Work Order:</label>
-      <input type="text" value="W0098214"/>
-    </div>
-    <div>
-      <label>Downtime:</label>
-      <input type="text" value="10:35:55"/>
-    </div>
-    <div>
-      <label>Performance:</label>
-      <input type="text" value="0.0%"/>
+
+    <!-- machine card -->
+    <div class="panel machine">
+      <div class="machine-head">Machine : {{ form.value.machineId }}</div>
+      <div class="circle-wrap">
+        <div class="circle ring"></div>
+        <div class="circle fill"></div>
+      </div>
+
+      <!-- bottom KPIs under circle -->
+      <div class="machine-kpis">
+        <div class="kpi-item">
+          <div class="label">Tool Run</div>
+          <input class="pill strong compact" formControlName="toolRun" />
+        </div>
+        <div class="kpi-item">
+          <div class="label">OEE</div>
+          <input class="pill strong compact" formControlName="oee" type="number" />
+        </div>
+        <div class="kpi-item">
+          <div class="label">No. of Cavities</div>
+          <input class="pill strong compact" formControlName="cavities" type="number" />
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="section stats">
-    <div><strong>Good Parts:</strong>   
-       <input type="text" value=""/>
+  <!-- stats row -->
+  <div class="panel stats3">
+    <div class="stat">
+      <span>Good Parts :</span>
+      <input class="pill strong" formControlName="goodParts" type="number" />
     </div>
-    <div><strong>Remaining:</strong>
-         <input type="text" value=""/> 
+    <div class="stat">
+      <span>Remaining :</span>
+      <input class="pill strong" formControlName="remaining" type="number" />
     </div>
-    <div><strong>Total Order:</strong>
-        <input type="text" value=""/> 
+    <div class="stat">
+      <span>Total Order :</span>
+      <input class="pill strong" formControlName="totalOrder" type="number" />
     </div>
   </div>
 
-  <div class="section machine-box">
-    <div><strong>Machine:</strong>
-       <input type="text" value=""/>
-       </div>
-    <div class="circle"></div>
-  </div>
-
-  <div class="section bottom-stats">
-    <div><label>Max lifts/hr:</label>
-     <input type="text" value=""/>
-     </div>
-    <div><label>Shuttle Time:</label></div>
-       <input type="text" value=""/>
-    <div><label>Shift Qty:</label>
-       <input type="text" value=""/>
-       </div>
-    <div></div><label>Finish Time:</label> 05-12-2019 12:37:41 AM
-       <input type="text" value=""/>
-       <!-- </div> -->
-    <div><label>Tool Run:</label>
-       <input type="text" value=""/>
-       </div>
-    <div><label>OEE:</label>
-       <input type="text" value=""/>
-       </div>
-    <div><label>No. of Cavities:</label>
-       <input type="text" value=""/>
-       </div>
-  </div>
-
-  <div class="timeline">
-    <strong>Job Timeline:</strong>
-    <div class="timeline-bar">
-      <div class="block running"></div>
-      <div class="block running"></div>
-      <div class="block running"></div>
-      <div class="block running"></div>
-      <div class="block running"></div>
-      <div class="block running"></div>
-      <div class="block stopped"></div>
-      <div class="block stopped"></div>
-      <div class="block running"></div>
-      <div class="block running"></div>
-      <div class="block stopped"></div>
-      <div class="block running"></div>
-      <div class="block stopped"></div>
-      <div class="block stopped"></div>
-      <div class="block running"></div>
-      <div class="block running"></div>
-      <div class="block running"></div>
-      <div class="block running"></div>
-      <div class="block running"></div>
-      <div class="block running"></div>
-      <div class="block stopped"></div>
-      <div class="block running"></div>
-      <div class="block running"></div>
-      <div class="block running"></div>
-      <div class="block running"></div>
-      <div class="block running"></div>
-      <div class="block running"></div>
-      <div class="block running"></div>
-      <div class="block running"></div>
-      <div class="block running"></div>
-      <div class="block running"></div>
-      <div class="block running"></div>
+  <!-- more info -->
+  <div class="panel grid-4">
+    <div class="kpi">
+      <div>Max lifts/hr</div>
+      <div class="muted">Std :</div>
+      <input class="pill strong compact" formControlName="maxLiftsStd" type="number" />
     </div>
-    <div class="timeline-labels">
-      <span>07 PM</span>
-      <span>08 PM</span>
-      <span>09 PM</span>
-      <span>10 PM</span>
-      <span>11 PM</span>
-      <span>12 AM</span>
-      <span>01 AM</span>
-      <span>02 AM</span>
-      <span>03 AM</span>
-      <span>04 AM</span>
-      <span>05 AM</span>
-      <span>06 AM</span>
-      <span>07 AM</span>
-      <span>08 AM</span> 
-      <span>09 AM</span>
-      <span>10 AM</span>
-      <span>11 AM</span>
-      <span>12 PM</span>
-      <span>01 PM</span>
-      <span>02 PM</span>
-      <span>03 PM</span>
-      <span>04 PM</span>
-      <span>05 PM</span>
-      <span>06 PM</span>
+    <div class="kpi">
+      <div>Shuttle Time</div>
+      <div class="muted">Std :</div>
+      <input class="pill strong compact" formControlName="shuttleStd" type="number" />
+    </div>
+    <div class="kpi">
+      <div>Shift Qty :</div>
+      <input class="pill strong compact" formControlName="shiftQty" type="number" />
+    </div>
+    <div class="kpi">
+      <div>Estimated finish time :</div>
+      <input class="pill strong" type="datetime-local" formControlName="estFinish" />
     </div>
   </div>
-</div>
+
+  <!-- job timeline -->
+  <div class="panel">
+    <div class="section-title">Job Timeline</div>
+    <div class="timeline">
+      <div
+        *ngFor="let s of timeline"
+        class="seg"
+        [style.background]="s.color"
+        [style.flex]="s.flex">
+      </div>
+    </div>
+
+    <div class="legend">
+      <span><i style="background:#6cb6ff"></i> Production</span>
+      <span><i style="background:#a855f7"></i> Scrap</span>
+      <span><i style="background:#facc15"></i> Break</span>
+      <span><i style="background:#e34234"></i> Breakdown/Downtime</span>
+      <span><i style="background:#30ba40"></i> Performance</span>
+    </div>
+
+    <div class="ticks">
+      <span *ngFor="let h of hours">{{ h }}</span>
+    </div>
+  </div>
+</form>

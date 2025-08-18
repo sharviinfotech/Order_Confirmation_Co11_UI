@@ -16,7 +16,8 @@
       <th>Assigned Supervisor</th>
       <th>From Date</th>
       <th>To Date</th>
-      <th>Line</th>
+      <th>Machine</th>
+      <th>Plant Code</th>
       <th>Status</th>
       <th>Actions</th>
     </tr>
@@ -32,7 +33,8 @@
       <td>{{ plan.assignedSupervisor }}</td>
       <td>{{ plan.date }}</td>
       <td>{{ plan.toDate }}</td>
-      <td>{{ plan.line }}</td>
+      <td>{{ plan.machine }}</td>
+      <td>{{ plan.plantCode }}</td>
       <td>
         <span class="status-badge"
               [ngClass]="{
@@ -58,6 +60,7 @@
     <h3>{{ isEditMode ? 'Edit Production Plan' : 'New Production Plan' }}</h3>
 
     <form class="form-grid" [formGroup]="planForm" (ngSubmit)="savePlan()">
+      
       <!-- Order ID -->
       <div class="form-field">
         <input formControlName="orderId" placeholder=" " />
@@ -151,17 +154,32 @@
         </small>
       </div>
 
-      <!-- Line -->
+      <!-- Machine -->
       <div class="form-field">
-        <select formControlName="line">
+        <select formControlName="machine">
           <option value="" disabled hidden></option>
           <option>Machine 1</option>
           <option>Machine 2</option>
           <option>Machine 3</option>
         </select>
         <label>Machine</label>
-        <small class="error" *ngIf="planForm.get('line')?.touched && planForm.get('line')?.invalid">
+        <small class="error" *ngIf="planForm.get('machine')?.touched && planForm.get('machine')?.invalid">
           Machine is required
+        </small>
+      </div>
+
+      <!-- Plant -->
+      <div class="form-field">
+        <select formControlName="plantCode">
+          <option value="" disabled hidden></option>
+          <option>Plant A</option>
+          <option>Plant B</option>
+          <option>Plant C</option>
+        </select>
+        <label>Plant Code</label>
+        <small class="error" *ngIf="planForm.get('plantCode')?.touched && planForm.get('plantCode')?.invalid">
+
+          Plant Code is required
         </small>
       </div>
 
@@ -183,6 +201,7 @@
         <button type="submit">{{ isEditMode ? 'Update Plan' : 'Add Plan' }}</button>
         <button type="button" (click)="cancelPopup()">Cancel</button>
       </div>
+
     </form>
   </div>
 </div>

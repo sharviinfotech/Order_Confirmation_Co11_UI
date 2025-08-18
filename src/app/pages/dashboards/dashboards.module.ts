@@ -7,7 +7,8 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 
 import { DashboardsRoutingModule } from './dashboards-routing.module';
 
-// Standalone components (imported ONLY, not declared)
+// Standalone components (import them directly)
+import { OperatorDashboardComponent } from './operatordashboard/operatordashboard.component';
 import { MachineMonitoringComponent } from './machinemonitoring/machinemonitoring.component';
 import { RawmaterialmanagementComponent } from './inventory/rawmaterialmanagement/rawmaterialmanagement.component';
 import { QualitycontrolComponent } from './qualitycontrol/qualitycontrol.component';
@@ -17,15 +18,9 @@ import { ReportsandAnalyticsComponent } from './reportsandanalytics/reportsandan
 import { SettingsandMasterdataComponent } from './settingsandmasterdata/settingsandmasterdata.component';
 import { ProductionPlanningComponent } from './productionplanning/productionplanning.component';
 import { ProductionmonitoringComponent } from './productionmonitoring/productionmonitoring.component';
-import { OperatorDashboardComponent } from './operatordashboard/operatordashboard.component';
 import { ProductionIntegrationWithERPComponent } from './productionintegrationwith-erp/productionintegrationwith-erp.component';
 
-
 @NgModule({
-  // ❌ No declarations for standalone components
-  declarations: [
-  
-  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -33,7 +28,8 @@ import { ProductionIntegrationWithERPComponent } from './productionintegrationwi
     BsDatepickerModule.forRoot(),
     NgxSpinnerModule,
 
-    // ✅ Standalone components only go in imports
+    // Standalone components go here
+    
     MachineMonitoringComponent,
     RawmaterialmanagementComponent,
     QualitycontrolComponent,
@@ -43,8 +39,8 @@ import { ProductionIntegrationWithERPComponent } from './productionintegrationwi
     SettingsandMasterdataComponent,
     ProductionPlanningComponent,
     ProductionmonitoringComponent,
-    OperatorDashboardComponent
+    ProductionIntegrationWithERPComponent
   ],
   providers: [BsDropdownConfig]
 })
-export class DashboardsModule { }
+export class DashboardsModule {}

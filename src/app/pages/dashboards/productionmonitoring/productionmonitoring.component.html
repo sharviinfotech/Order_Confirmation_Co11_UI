@@ -5,12 +5,12 @@
       <th>Order ID</th>
       <th>Product</th>
       <th>Planned Qty</th>
-      <th>Actual Qty</th>
       <th>Shift</th>
       <th>Assigned Operator</th>
       <th>Assigned Supervisor</th>
       <th>Date</th>
-      <th>Line</th>
+      <th>Machine</th>
+      <th>Actual Qty</th> <!-- ✅ Moved here -->
       <th>Status</th>
       <th>Posting Date</th>
       <th>Runtime</th>
@@ -24,6 +24,11 @@
       <td>{{ plan.get('orderId')?.value }}</td>
       <td>{{ plan.get('product')?.value }}</td>
       <td>{{ plan.get('plannedQty')?.value }}</td>
+      <td>{{ plan.get('shift')?.value }}</td>
+      <td>{{ plan.get('assignedOperator')?.value }}</td>
+      <td>{{ plan.get('assignedSupervisor')?.value }}</td>
+      <td>{{ plan.get('date')?.value }}</td>
+      <td>{{ plan.get('machine')?.value }}</td>
 
       <!-- Actual Qty -->
       <td>
@@ -31,11 +36,6 @@
         <span *ngIf="editingIndex !== i">{{ plan.get('actualQty')?.value }}</span>
       </td>
 
-      <td>{{ plan.get('shift')?.value }}</td>
-      <td>{{ plan.get('assignedOperator')?.value }}</td>
-      <td>{{ plan.get('assignedSupervisor')?.value }}</td>
-      <td>{{ plan.get('date')?.value }}</td>
-      <td>{{ plan.get('line')?.value }}</td>
       <td>{{ plan.get('status')?.value }}</td>
 
       <!-- Posting Date -->

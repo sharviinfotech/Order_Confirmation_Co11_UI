@@ -12,7 +12,8 @@ interface ProductionPlan {
   assignedSupervisor: string;
   date: string;   // From Date
   toDate: string; // To Date
-  line: string;
+  machine: string;
+  plantCode: string;  // ✅ Changed from plantcode to plantCode
   status: string;
 }
 
@@ -48,7 +49,8 @@ export class ProductionPlanningComponent {
       assignedSupervisor: ['', Validators.required],
       date: [today, Validators.required],    // From Date
       toDate: [today, Validators.required],  // To Date
-      line: ['', Validators.required],
+      machine: ['', Validators.required],
+      plantCode: ['', Validators.required], // ✅ Changed here
       status: ['Planned', Validators.required]
     });
   }
