@@ -1,21 +1,15 @@
 /* Root */
-.dashboard-root {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+.dashboard-body {
+  // background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   min-height: 100vh;
   padding: 20px;
   color: #ecf0f1;
   font-family: "Segoe UI", Roboto, sans-serif;
+    background: url("/assets/images/Dashboard_bg.jpg") no-repeat center center / cover !important;
+
 }
 
-/* Header */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #fff;
-  margin-bottom: 25px;
-  font-weight: 600;
-}
+
 
 .header .title {
   font-size: 1.6rem;
@@ -36,17 +30,25 @@
 
 /* Card Style */
 .card {
-  background: rgba(15, 25, 35, 0.9);
-  border-radius: 14px;
-  padding: 18px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  // background: rgba(15, 25, 35, 0.9);
+  // border-radius: 14px;
+  // padding: 18px;
+  // box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  // transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transform: translate(50%, -50%);
+    padding: 10px;
+    border-radius: 10px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
-}
+// .card:hover {
+//   transform: translateY(-6px);
+//   box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+// }
 
 .card-title {
   font-size: 1rem;
