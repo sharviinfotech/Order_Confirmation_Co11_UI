@@ -256,8 +256,8 @@ body[data-sidebar="dark"] {
     
     .navbar-brand-box {
         // background: $sidebar-dark-bg;
-  background: url("/assets/images/flightwhite.jpeg") no-repeat center center / cover !important;
-  background-image: linear-gradient(to top, #f1e7d95e, #dcd5cfa8) !important;
+  background: url("/assets/images/techmachine4.png")  !important;
+//   background-image: linear-gradient(to top, #f1e7d95e, #dcd5cfa8) !important;
   border-bottom: 1px solid white;
         // background-image: linear-gradient(to top, #6ba3cd, #031c2e) !important;
           // background: url("/assets/images/bg3.jpg") no-repeat center center / cover !important;
@@ -275,6 +275,40 @@ body[data-sidebar="dark"] {
     .logo-light {
         display: block;
     }
+}
+.navbar-brand-box {
+  position: relative;
+  text-align: center;
+   font-size: 0px;
+}
+
+.navbar-brand-box .brand-text {
+  position: absolute;
+  bottom: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 34px;
+  font-weight: 800;
+  font-family: 'Poppins', sans-serif; /* modern clean font */
+  color: #ffffff;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+//   background: linear-gradient(90deg, #00c6ff, #0072ff); /* gradient text */
+  -webkit-background-clip: text;
+//   -webkit-text-fill-color: transparent;
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 @media (max-width: 600px) {

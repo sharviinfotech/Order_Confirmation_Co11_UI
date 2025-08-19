@@ -57,7 +57,7 @@
 
 #sidebar-menu {
     padding: 30px 0 30px 0;
-    margin-top: 85px !important;
+    // margin-top: 85px !important;
     backdrop-filter: blur(0px) brightness(0.9);
     // background: url("/assets/images/flightAndSky.jpg") no-repeat center center / cover !important;
 
@@ -210,8 +210,28 @@
 
     .navbar-brand-box {
         width: $sidebar-collapsed-width !important;
+        
     }
+.navbar-brand-box {
+  position: relative;
+  text-align: center;
+}
 
+.navbar-brand-box .brand-text {
+  
+ 
+  font-size: 0px;
+  font-weight: 800;
+  font-family: 'Poppins', sans-serif; /* modern clean font */
+  color: #ffffff;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+//   background: linear-gradient(90deg, #00c6ff, #0072ff); /* gradient text */
+  -webkit-background-clip: text;
+//   -webkit-text-fill-color: transparent;
+  animation: fadeInUp 1s ease-out;
+}
     .logo {
         span.logo-lg {
             display: none;

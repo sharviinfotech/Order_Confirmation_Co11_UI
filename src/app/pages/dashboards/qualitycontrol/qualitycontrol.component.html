@@ -1,3 +1,58 @@
+<div class="card">
+  <div class="card-header">
+    Quality Control Screen
+  </div>
+  <div class="card-body">
+
+
+    <div class="table-responsive tableFixHead">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>QC ID</th>
+            <th>Work Order ID</th>
+            <th>Inspector Name</th>
+            <th>Product / Material</th>
+            <th>Parameters</th>
+            <th>Result</th>
+            <th>Deviation Notes</th>
+            <th>Image</th>
+            <th>Date / Time of Inspection</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let qc of qualityChecks">
+            <td>{{ qc.qcId }}</td>
+            <td>{{ qc.workOrderId }}</td>
+            <td>{{ qc.inspectorName }}</td>
+            <td>{{ qc.productMaterial }}</td>
+            <td>{{ qc.parameters }}</td>
+            <td>
+              <span class="result-badge {{ getResultClass(qc.result) }}">
+                {{ qc.result }}
+              </span>
+            </td>
+            <td>{{ qc.deviationNotes }}</td>
+            <td>
+              <img [src]="qc.image" alt="QC Image" class="qc-image">
+            </td>
+            <td>{{ qc.inspectionDateTime }}</td>
+            <td>
+              <button class="btn btn-edit">Edit</button>
+              <button class="btn btn-delete">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- 
 <div class="qc-container">
   <h2>Quality Control Screen</h2>
 
@@ -40,4 +95,4 @@
       </tr>
     </tbody>
   </table>
-</div>
+</div> -->

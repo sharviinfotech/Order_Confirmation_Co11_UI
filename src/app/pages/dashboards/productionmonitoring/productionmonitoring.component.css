@@ -1,43 +1,4 @@
-/* ===== Section Title ===== */
-h2 {
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: #182848; /* Dark blue for consistency */
-}
 
-/* ===== Table Styling ===== */
-.table {
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  border-collapse: collapse;
-  width: 100%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-}
-
-.table thead th {
-  background: linear-gradient(90deg, #4b6cb7, #182848);
-  color: #fff;
-  font-weight: 600;
-  padding: 10px;
-  border: 2px solid #ccc; /* Thicker border for clean separation */
-}
-
-.table tbody td {
-  padding: 10px;
-  border: 2px solid #ccc;
-  font-size: 14px;
-}
-
-.table tbody tr:nth-child(even) {
-  background: #f4f8ff;
-}
-
-.table tbody tr:hover {
-  background: #e9f0ff;
-  transition: background 0.2s ease-in-out;
-}
 
 /* ===== Input Styling ===== */
 input.form-control {

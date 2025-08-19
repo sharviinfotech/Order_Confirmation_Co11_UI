@@ -1,4 +1,56 @@
-<div class="pm-container">
+<div class="card">
+  <div class="card-header">
+    Preventive Maintenance Management
+  </div>
+  <div class="card-body">
+
+
+    <div class="table-responsive tableFixHead">
+      <table class="table table-bordered table-striped">
+        <thead>
+      <tr>
+        <th>Machine ID</th>
+        <th>Maintenance Type</th>
+        <th>Last Service Date</th>
+        <th>Next Due Date</th>
+        <th>Technician Assigned</th>
+        <th>Spare Parts Used</th>
+        <th>Cost Incurred</th>
+        <th>Remarks</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of maintenanceRecords">
+        <td>{{ record.machineId }}</td>
+        <td>{{ record.maintenanceType }}</td>
+        <td>{{ record.lastServiceDate }}</td>
+        <td>{{ record.nextDueDate }}</td>
+        <td>{{ record.technician }}</td>
+        <td>{{ record.spareParts }}</td>
+        <td>{{ record.costIncurred }}</td>
+        <td>{{ record.remarks }}</td>
+        <td>
+          <span class="status-badge {{ getStatusClass(record.status) }}">
+            {{ record.status }}
+          </span>
+        </td>
+        <td>
+          <button class="btn btn-edit">Edit</button>
+          <button class="btn btn-delete">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- <div class="pm-container">
   <h2>Preventive Maintenance Management</h2>
 
   <table class="pm-table">
@@ -38,4 +90,4 @@
       </tr>
     </tbody>
   </table>
-</div>
+</div> -->

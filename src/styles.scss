@@ -253,7 +253,8 @@ button {
   padding: 10px !important;
   border-bottom: 2px solid #ddd !important;
   /* background-color: #090979 !important; */
-  background-color: rgb(88 98 145)!important;
+  // background-color: rgb(88 98 145)!important;
+  background: linear-gradient(90deg, #4b6cb7, #182848) !important;
   color: white;
   text-align-last: center !important;
 
@@ -772,8 +773,8 @@ input:focus {
 .card {
   border-radius: 8px;
   margin-bottom: 20px;
-  // background-color: #ffffff;
-  background: url("/assets/images/bg2.jpg") no-repeat center center / cover !important;
+  background-color: #ffffff;
+  // background: url("/assets/images/bg2.jpg") no-repeat center center / cover !important;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -789,7 +790,7 @@ input:focus {
   color: #cfb10f !important;
   border-radius: 0px !important;
   /* background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(225,70,252,1) 100%); */
-  border-bottom: 2px solid green;
+  border-bottom: 2px solid green !important;
 }
 .modal-header {
   padding: 10px !important;
@@ -932,16 +933,19 @@ input:focus {
   // margin-top: 20px;
 }
 
-.table th,
+
 .table td {
   padding: 10px;
   text-align: left;
   border: 1px solid #ddd;
+ 
 }
 
 .table th {
   background-color: #f8f9fa;
   font-weight: bold;
+   color: white !important;
+   white-space: nowrap;
 }
 
 .table-striped tbody tr:nth-child(odd) {
