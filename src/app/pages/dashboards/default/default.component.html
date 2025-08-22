@@ -1,26 +1,26 @@
 <div class="dashboard-body">
-  <!-- Header -->
+ 
   <div class="card-header">
     Smart Manufacturing Dashboard
   </div>
 
   <div class="card-body">
-    <!-- Main Grid -->
+    
     <section class="grid">
 
-      <!-- Production Today -->
+      
       <article class="card small-card">
         <div class="card-title">Production Today</div>
         <div class="kpi big">{{ productionToday }}</div>
       </article>
 
-      <!-- OEE -->
+     
       <article class="card small-card">
         <div class="card-title">OEE</div>
         <div class="kpi big">{{ oee }}%</div>
       </article>
 
-      <!-- Machine Status -->
+      
       <article class="card status-card">
         <div class="card-title">Machine Status</div>
         <div class="status-row">
@@ -37,7 +37,7 @@
         </div>
       </article>
 
-      <!-- Alerts small -->
+      
       <article class="card alerts-small">
         <div class="card-title">Real-time Alerts</div>
         <ul>
@@ -45,21 +45,21 @@
         </ul>
       </article>
 
-      <!-- Energy Consumption (big) -->
+      
       <article class="card chart-card big">
         <div class="card-title">Energy Consumption</div>
         <canvas baseChart [data]="energyData" [options]="energyOptions" chartType="line">
         </canvas>
       </article>
 
-      <!-- Downtime Summary (big) -->
+      
       <article class="card chart-card big">
         <div class="card-title">Downtime Summary</div>
         <canvas baseChart [data]="downtimeData" [options]="downtimeOptions" chartType="bar">
         </canvas>
       </article>
 
-      <!-- Wide Alerts -->
+      
       <article class="card wide-card">
         <div class="card-title">Real-time Alerts</div>
         <ul>
