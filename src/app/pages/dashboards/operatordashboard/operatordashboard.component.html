@@ -1,148 +1,157 @@
-<form class="page" [formGroup]="form" (ngSubmit)="saveData()">
-  <!-- top info row -->
-  <div class="top-row">
-    <div class="left">
-      <span class="muted">Operator :</span>
-      <input type="text" class="pill pill-select" formControlName="operator" />
-    </div>
-    <div class="right">
-      <span class="muted">Time :</span>
-      <span class="strong">{{ now | date:'dd-MM-yyyy hh:mm:ss a' }}</span>
-    </div>
+<div class="container-fluid">
+  <!-- Header -->
+  <div class="card-header">
+   Operator Dashboard
   </div>
 
-  <!-- action buttons -->
-  <div class="actions">
-    <button class="btn" type="button" (click)="endOfShift()">End Of Shift</button>
-    <button class="btn" type="button" (click)="emptyLift()">Empty Lift</button>
-    <button class="btn" type="button" (click)="takeBreak()">Break</button>
-    <button class="btn" type="button" (click)="recordScrap()">Scrap</button>
-    <button class="btn" type="button" (click)="calculateOEE()">OEE</button>
-    <button class="btn" type="button" (click)="breakdown()">Breakdown</button>
-
-    <!-- SAVE (submits the form) -->
-    <button class="btn save" type="submit">Save</button>
-  </div>
-
-  <!-- main grid -->
-  <div class="main-grid">
-    <!-- left details -->
-    <div class="panel fields-grid">
-      <div class="field">
-        <div class="label">PRODUCT CODE :</div>
-        <input class="pill pill-select" formControlName="productCode" />
-      </div>
-      <div class="field">
-        <div class="label">DESCRIPTION :</div>
-        <input class="pill pill-select" formControlName="description" />
-      </div>
-      <div class="field">
-        <div class="label">SCRAP :</div>
-        <input class="pill pill-select" formControlName="scrap" type="number" />
-      </div>
-      <div class="field">
-        <div class="label">WORK ORDER :</div>
-        <input class="pill strong" formControlName="workOrder" />
-      </div>
-      <div class="field">
-        <div class="label">DOWNTIME :</div>
-        <input class="pill pill-select" formControlName="downtime" />
-      </div>
-      <div class="field">
-        <div class="label">PERFORMANCE :</div>
-        <div class="perf-row">
-          <input class="pill pill-select" formControlName="performance" type="number" />
-          <span>%</span>
+  <div class="card-body">
+    <form class="page" [formGroup]="form" (ngSubmit)="saveData()">
+      <!-- top info row -->
+      <div class="top-row">
+        <div class="left">
+          <span class="muted">Operator :</span>
+          <input type="text" class="pill pill-select highlight-value" formControlName="operator" />
+        </div>
+        <div class="right">
+          <span class="muted">Time :</span>
+          <span class="strong highlight-value">{{ now | date:'dd-MM-yyyy hh:mm:ss a' }}</span>
         </div>
       </div>
-    </div>
 
-    <!-- machine card -->
-    <div class="panel machine">
-      <div class="machine-head">Machine : {{ form.value.machineId }}</div>
-      <div class="circle-wrap">
-        <div class="circle ring"></div>
-        <div class="circle fill"></div>
+      <!-- action buttons -->
+      <div class="actions">
+        <button class="btn" type="button" (click)="endOfShift()">End Of Shift</button>
+        <button class="btn" type="button" (click)="emptyLift()">Empty Lift</button>
+        <button class="btn" type="button" (click)="takeBreak()">Break</button>
+        <button class="btn" type="button" (click)="recordScrap()">Scrap</button>
+        <button class="btn" type="button" (click)="calculateOEE()">OEE</button>
+        <button class="btn" type="button" (click)="breakdown()">Breakdown</button>
+
+        <!-- SAVE (submits the form) -->
+        <button class="btn save" type="submit">Save</button>
       </div>
 
-      <!-- bottom KPIs under circle -->
-      <div class="machine-kpis">
-        <div class="kpi-item">
-          <div class="label">Tool Run</div>
-          <input class="pill strong compact" formControlName="toolRun" />
+      <!-- main grid -->
+      <div class="main-grid">
+        <!-- left details -->
+        <div class="panel fields-grid">
+          <div class="field">
+            <div class="label"><span class="highlight-value">PRODUCT CODE :</span></div>
+            <input class="pill pill-select highlight-value" formControlName="productCode" />
+          </div>
+          <div class="field">
+            <div class="label"><span class="highlight-value">DESCRIPTION :</span></div>
+            <input class="pill pill-select highlight-value" formControlName="description" />
+          </div>
+          <div class="field">
+            <div class="label"><span class="highlight-value">SCRAP :</span></div>
+            <input class="pill pill-select highlight-value" formControlName="scrap" type="number" />
+          </div>
+          <div class="field">
+            <div class="label"><span class="highlight-value">WORK ORDER :</span></div>
+            <input class="pill strong highlight-value" formControlName="workOrder" />
+          </div>
+          <div class="field">
+            <div class="label"><span class="highlight-value">DOWNTIME :</span></div>
+            <input class="pill pill-select highlight-value" formControlName="downtime" />
+          </div>
+          <div class="field">
+            <div class="label"><span class="highlight-value">PERFORMANCE :</span></div>
+            <div class="perf-row">
+              <input class="pill pill-select highlight-value" formControlName="performance" type="number" />
+              <span>%</span>
+            </div>
+          </div>
         </div>
-        <div class="kpi-item">
-          <div class="label">OEE</div>
-          <input class="pill strong compact" formControlName="oee" type="number" />
-        </div>
-        <div class="kpi-item">
-          <div class="label">No. of Cavities</div>
-          <input class="pill strong compact" formControlName="cavities" type="number" />
+
+        <!-- machine card -->
+        <div class="panel machine">
+          <div class="machine-head">Machine : {{ form.value.machineId }}</div>
+          <div class="circle-wrap">
+            <div class="circle ring"></div>
+            <div class="circle fill"></div>
+          </div>
+
+          <!-- bottom KPIs under circle -->
+          <div class="machine-kpis">
+            <div class="kpi-item">
+              <div class="label"><span class="highlight-value">Tool Run</span></div>
+              <input class="pill strong compact highlight-value" formControlName="toolRun" />
+            </div>
+            <div class="kpi-item">
+              <div class="label"><span class="highlight-value">OEE</span></div>
+              <input class="pill strong compact highlight-value" formControlName="oee" type="number" />
+            </div>
+            <div class="kpi-item">
+              <div class="label"><span class="highlight-value">No. of Cavities</span></div>
+              <input class="pill strong compact highlight-value" formControlName="cavities" type="number" />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- stats row -->
-  <div class="panel stats3">
-    <div class="stat">
-      <span>Good Parts :</span>
-      <input class="pill strong" formControlName="goodParts" type="number" />
-    </div>
-    <div class="stat">
-      <span>Remaining :</span>
-      <input class="pill strong" formControlName="remaining" type="number" />
-    </div>
-    <div class="stat">
-      <span>Total Order :</span>
-      <input class="pill strong" formControlName="totalOrder" type="number" />
-    </div>
-  </div>
-
-  <!-- more info -->
-  <div class="panel grid-4">
-    <div class="kpi">
-      <div>Max lifts/hr</div>
-      <div class="muted">Std :</div>
-      <input class="pill strong compact" formControlName="maxLiftsStd" type="number" />
-    </div>
-    <div class="kpi">
-      <div>Shuttle Time</div>
-      <div class="muted">Std :</div>
-      <input class="pill strong compact" formControlName="shuttleStd" type="number" />
-    </div>
-    <div class="kpi">
-      <div>Shift Qty :</div>
-      <input class="pill strong compact" formControlName="shiftQty" type="number" />
-    </div>
-    <div class="kpi">
-      <div>Estimated finish time :</div>
-      <input class="pill strong" type="datetime-local" formControlName="estFinish" />
-    </div>
-  </div>
-
-  <!-- job timeline -->
-  <div class="panel">
-    <div class="section-title">Job Timeline</div>
-    <div class="timeline">
-      <div
-        *ngFor="let s of timeline"
-        class="seg"
-        [style.background]="s.color"
-        [style.flex]="s.flex">
+      <!-- stats row -->
+      <div class="panel stats3">
+        <div class="stat">
+          <span><span class="highlight-value">Good Parts :</span></span>
+          <input class="pill strong highlight-value" formControlName="goodParts" type="number" />
+        </div>
+        <div class="stat">
+          <span><span class="highlight-value">Remaining :</span></span>
+          <input class="pill strong highlight-value" formControlName="remaining" type="number" />
+        </div>
+        <div class="stat">
+          <span><span class="highlight-value">Total Order :</span></span>
+          <input class="pill strong highlight-value" formControlName="totalOrder" type="number" />
+        </div>
       </div>
-    </div>
 
-    <div class="legend">
-      <span><i style="background:#6cb6ff"></i> Production</span>
-      <span><i style="background:#a855f7"></i> Scrap</span>
-      <span><i style="background:#facc15"></i> Break</span>
-      <span><i style="background:#e34234"></i> Breakdown/Downtime</span>
-      <span><i style="background:#30ba40"></i> Performance</span>
-    </div>
+      <!-- more info -->
+      <div class="panel grid-4">
+        <div class="kpi">
+          <div><span class="highlight-value">Max lifts/hr</span></div>
+       
+          <input class="pill strong compact highlight-value" formControlName="maxLiftsStd" type="number" />
+        </div>
+        <div class="kpi">
+          <div><span class="highlight-value">Shuttle Time</span></div>
+         
+          <input class="pill strong compact highlight-value" formControlName="shuttleStd" type="number" />
+        </div>
+        <div class="kpi">
+          <div><span class="highlight-value">Shift Qty :</span></div>
+          <input class="pill strong compact highlight-value" formControlName="shiftQty" type="number" />
+        </div>
+        <div class="kpi">
+          <div><span class="highlight-value">Estimated finish time :</span></div>
+          <input class="pill strong highlight-value" type="datetime-local" formControlName="estFinish" />
+        </div>
+      </div>
 
-    <div class="ticks">
-      <span *ngFor="let h of hours">{{ h }}</span>
-    </div>
+      <!-- job timeline -->
+      <div class="panel">
+        <div class="section-title">Job Timeline</div>
+        <div class="timeline">
+          <div
+            *ngFor="let s of timeline"
+            class="seg"
+            [style.background]="s.color"
+            [style.flex]="s.flex">
+          </div>
+        </div>
+
+        <div class="legend">
+          <span><i style="background:#6cb6ff"></i> Production</span>
+          <span><i style="background:#a855f7"></i> Scrap</span>
+          <span><i style="background:#facc15"></i> Break</span>
+          <span><i style="background:#e34234"></i> Breakdown/Downtime</span>
+          <span><i style="background:#30ba40"></i> Performance</span>
+        </div>
+
+        <div class="ticks">
+          <span *ngFor="let h of hours">{{ h }}</span>
+        </div>
+      </div>
+    </form>
   </div>
-</form>
+</div>

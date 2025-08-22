@@ -21,7 +21,7 @@ export class RawmaterialmanagementComponent {
       batchNo: 'BATCH-2025-01',
       dateReceived: '2025-07-15',
       expiryDate: '2026-07-15',
-      status: 'OK'
+      status: 'Not Started'
     },
     {
       materialId: 'RM-1002',
@@ -33,7 +33,7 @@ export class RawmaterialmanagementComponent {
       batchNo: 'BATCH-2025-02',
       dateReceived: '2025-06-20',
       expiryDate: '2026-06-20',
-      status: 'Low'
+      status: 'In progress'
     },
     {
       materialId: 'RM-1001',
@@ -45,7 +45,7 @@ export class RawmaterialmanagementComponent {
       batchNo: 'BATCH-2025-01',
       dateReceived: '2025-07-15',
       expiryDate: '2026-07-15',
-      status: 'OK'
+      status: 'Completed'
     }
   ];
 

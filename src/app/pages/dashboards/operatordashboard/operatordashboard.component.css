@@ -1,3 +1,28 @@
+.container-fluid {
+  background: rgba(255, 255, 255, 0.15);
+  background: url("/assets/images/Dashboard.jpeg") no-repeat center center / cover !important;
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Transparent input, select, textarea styling */
+input, select, textarea {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+label {
+  color: #fff;
+  font-weight: 500;
+}
+
 /* layout base */
 * { box-sizing: border-box; }
 .page { padding: 14px; font-family: Arial, Helvetica, sans-serif; color: #222; }
@@ -18,10 +43,17 @@
 .btn.save { background:#30ba40; }
 .btn.save:hover { background:#279a35; }
 
-/* panels / cards */
+/* panels / cards - TRANSPARENT VIEW */
 .panel {
-  background:#fff; border:1px solid #e5e7eb; border-radius:10px;
-  padding:12px; box-shadow:0 2px 8px rgba(0,0,0,.06); margin-bottom:14px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  margin-bottom: 14px;
+  color: #fff;
 }
 
 /* main grid */
@@ -108,4 +140,29 @@ input.pill:focus { border-color: #2e6fcb; background: #fff; }
   .stats3 { grid-template-columns: 1fr; }
   .grid-4 { grid-template-columns: 1fr; }
   .actions { flex-wrap:wrap; }
+}
+
+/* ========================= */
+/* HIGHLIGHT VALUE STYLES — UPDATED FOR BLACK TEXT */
+/* ========================= */
+
+.highlight-value {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+}
+
+/* Placeholder visibility */
+input::placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Focus effect for highlighted values */
+input.highlight-value:focus {
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  border-color: #000000 !important;
+  color: #000000 !important;
+  outline: none;
 }
