@@ -17,19 +17,19 @@ import { ServiceChargesComponent } from './service-charges/service-charges.compo
 import { GlobalReviewEditComponent } from './global-review-edit/global-review-edit.component';
 import { ReviewNotificationComponent } from './review-notification/review-notification.component';
 import { SectorWiseComponent } from './sector-wise/sector-wise.component';
-import { ProductionPlanningComponent } from './productionplanning/productionplanning.component';
-import { MachineMonitoringComponent } from './machinemonitoring/machinemonitoring.component';
+import { OrderconfirmationComponent } from 'src/app/orderconfirmation/orderconfirmation.component';
+
+
 // In all files that import this component
-import { WorkOrderManagementComponent } from './workordermanagement/workordermanagement.component';
-import { RawmaterialmanagementComponent } from './inventory/rawmaterialmanagement/rawmaterialmanagement.component';
-import { QualitycontrolComponent } from './qualitycontrol/qualitycontrol.component';
-import { PreventivemaintenancemanagementComponent } from './preventivemaintenancemanagement/preventivemaintenancemanagement.component';
-import { UserManagementComponent } from './usermanagement/usermanagement.component';
-import { ReportsandAnalyticsComponent } from './reportsandanalytics/reportsandanalytics.component';
-import { SettingsandMasterdataComponent } from './settingsandmasterdata/settingsandmasterdata.component';
-import { ProductionmonitoringComponent } from './productionmonitoring/productionmonitoring.component';
-import { OperatorDashboardComponent } from './operatordashboard/operatordashboard.component';
-import { ProductionIntegrationWithERPComponent } from './productionintegrationwith-erp/productionintegrationwith-erp.component';
+
+
+
+
+
+
+
+
+
 
 
 
@@ -84,54 +84,22 @@ const routes: Routes = [
         path: 'sectorwise',
         component: SectorWiseComponent
     },
-    {
-        path: 'productionplanning',
-        component: ProductionPlanningComponent
-    },
-    {
-        path: 'productionmonitoring',
-        component: ProductionmonitoringComponent
-    },
-    {
-        path: 'productionintegrationwithERP',
-        component: ProductionIntegrationWithERPComponent
-    },
      {
-        path: 'operatordashboard',
-        component: OperatorDashboardComponent
+        path: 'orderconfirmation',
+        component: OrderconfirmationComponent
     },
-    {
-        path: 'machinemonitoring',
-        component: MachineMonitoringComponent
-    },
-    {
-        path: 'workordermanagement',
-        component: WorkOrderManagementComponent
-    },
-    {
-        path: 'rawmaterialmanagement',
-        component: RawmaterialmanagementComponent
-    },
-    {
-        path: 'qualitycontrol',
-        component: QualitycontrolComponent
-    },
-    {
-        path: 'preventivemaintenancemanagement',
-        component: PreventivemaintenancemanagementComponent
-    },
-    {
-        path: 'usermanagement',
-        component: UserManagementComponent
-    },
-    {
-        path: 'reportsandanalytics',
-        component: ReportsandAnalyticsComponent
-    },
-    {
-        path: 'settingsandmasterdata',
-        component: SettingsandMasterdataComponent
-    },
+   
+    
+    
+    
+    
+   
+  
+    
+  
+  
+   
+   
     
    
 

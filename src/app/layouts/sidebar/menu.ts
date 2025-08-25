@@ -13,6 +13,13 @@ export const MENU: MenuItem[] = [
                 parentId: 2,
                 icon: 'bx-home-circle',
             },
+             {
+                id: 2,
+                label: 'Order Confirmation',
+                link: '/orderconfirmation',
+                parentId: 2,
+                icon: 'bx-home-circle',
+            },
             
             // {
             //     id:4 ,
@@ -71,91 +78,19 @@ export const MENU: MenuItem[] = [
             //     parentId: 1,
             //     icon: 'bx bx-receipt',
             // },
-            {
-                id: 9,
-                label: 'Production Planning',
-                link: '/productionplanning',
-                parentId: 1,
-                icon: 'bx bx-receipt',
-            },
-            {
-                id: 9,
-                label: 'Production Monitoring',
-                link: '/productionmonitoring',
-                parentId: 1,
-                icon: 'bx bx-receipt',
-            },
-             {
-                id: 9,
-                label: 'Production Integration With ERP',
-                link: '/productionintegrationwithERP',
-                parentId: 1,
-                icon: 'bx bx-receipt',
-            },
-                        {
-                id: 9,
-                label: 'Operator dashboard',
-                link: '/operatordashboard',
-                parentId: 1,
-                icon: 'bx bx-receipt',
-            },
-            {
-                id: 9,
-                label: 'Machine Monitoring',
-                link: '/machinemonitoring',
-                parentId: 1,
-                icon: 'bx bx-receipt',
-            },
-            {
-                id: 9,
-                label: 'Work Order Management',
-                link: '/workordermanagement',
-                parentId: 1,
-                icon: 'bx bx-receipt',
-            },
-             {
-                id: 9,
-                label: 'Raw Material Management',
-                link: '/rawmaterialmanagement',
-                parentId: 1,
-                icon: 'bx bx-receipt',
-            },
+          
+          
+          
+                        
              
-             {
-                id: 9,
-                label: 'Quality Control',
-                link: '/qualitycontrol',
-                parentId: 1,
-                icon: 'bx bx-receipt',
-            },
-            {
-                id: 9,
-                label: 'Preventive Maintenance Management',
-                link: '/preventivemaintenancemanagement',
-                parentId: 1,
-                icon: 'bx bx-receipt',
-            },
-            {
-                id: 9,
-                label: 'User Management',
-                link: '/usermanagement',
-                parentId: 1,
-                icon: 'bx bx-receipt',
-            },
-            {
-                id: 9,
-                label: 'Reports And Analytics',
-                link: '/reportsandanalytics',
-                parentId: 1,
-                icon: 'bx bx-receipt',
-            },
-            {
-                id: 9,
-                label: 'Settings And Master Data',
-                link: '/settingsandmasterdata',
-                parentId: 1,
-                icon: 'bx bx-receipt',
-            },
+           
+           
+             
+            
+           
+          
+           
+           
             
              
            
