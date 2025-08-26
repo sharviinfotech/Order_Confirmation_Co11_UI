@@ -6,6 +6,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 
 import { DashboardsRoutingModule } from './dashboards-routing.module';
+import { CooisComponent } from './coois/coois.component';
+import { Co11Component } from './co11/co11.component';
+
 
 // Standalone components (import them directly)
 
@@ -34,6 +37,13 @@ import { DashboardsRoutingModule } from './dashboards-routing.module';
    
     
   ],
-  providers: [BsDropdownConfig]
+  providers: [BsDropdownConfig],
+  declarations: [
+    // CooisComponent
+  
+    
+  
+    // Co11Component
+  ]
 })
 export class DashboardsModule {}

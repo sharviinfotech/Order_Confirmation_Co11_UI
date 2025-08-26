@@ -17,8 +17,9 @@ import { ServiceChargesComponent } from './service-charges/service-charges.compo
 import { GlobalReviewEditComponent } from './global-review-edit/global-review-edit.component';
 import { ReviewNotificationComponent } from './review-notification/review-notification.component';
 import { SectorWiseComponent } from './sector-wise/sector-wise.component';
-import { OrderconfirmationComponent } from 'src/app/orderconfirmation/orderconfirmation.component';
 
+import { CooisComponent } from './coois/coois.component';
+import { Co11Component } from './co11/co11.component';
 
 // In all files that import this component
 
@@ -84,10 +85,16 @@ const routes: Routes = [
         path: 'sectorwise',
         component: SectorWiseComponent
     },
-     {
-        path: 'orderconfirmation',
-        component: OrderconfirmationComponent
+    {
+        path: 'co11',
+        component: Co11Component
     },
+   
+        {
+        path: 'coois',
+        component: CooisComponent
+    },
+
    
     
     

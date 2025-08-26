@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface ProductionPlan {
-  confirmation: string;
+  orderId: string;
   product: string;
   plannedQty: number;
   actualQty: number;
@@ -17,16 +17,15 @@ interface ProductionPlan {
   status: string;
 }
 
-
 @Component({
-  selector: 'app-orderconfirmation',
-   standalone: true,
+  selector: 'app-co11',
+    standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './orderconfirmation.component.html',
-  styleUrls: ['./orderconfirmation.component.css']
+  templateUrl: './co11.component.html',
+  styleUrl: './co11.component.css'
 })
-export class OrderconfirmationComponent  {
-    plans: ProductionPlan[] = [];
+export class Co11Component {
+ plans: ProductionPlan[] = [];
   isEditMode = false;
   editIndex: number | null = null;
   planForm!: FormGroup;
@@ -38,7 +37,7 @@ export class OrderconfirmationComponent  {
   createForm() {
     const today = new Date().toISOString().substring(0, 10);
     this.planForm = this.fb.group({
-      confirmation: ['', Validators.required],
+      orderId: ['', Validators.required],
       product: ['', Validators.required],
       plannedQty: ['', Validators.required],
       actualQty: [''], // optional
@@ -106,3 +105,4 @@ export class OrderconfirmationComponent  {
     this.plans.splice(index, 1);
   }
 }
+
