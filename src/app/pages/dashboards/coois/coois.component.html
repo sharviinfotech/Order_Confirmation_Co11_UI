@@ -42,7 +42,7 @@
       </div>
 
       <!-- Conditional Fields -->
-      <ng-container *ngIf="form.get('prdOrdersCheck')?.value || form.get('plndOrdersCheck')?.value">
+      <ng-container *ngIf="form.get('prdOrdersCheck')?.value || form.get('plndOrdersCheck')?.value && this.form.value.dropdown == 'Order Headers'">
         <div class="row">
           <div class="col-sm-3">
             <label class="form-label">From Order Number</label>
@@ -83,7 +83,7 @@
       </ng-container>
 
        <div class="text-end mt-3">
-        <button type="submit" (click)="onSubmit()" class="btn btn-primary">Submit</button>
+        <button type="button" (click)="onSubmit()" class="btn btn-primary">Submit</button>
       </div>
 
     </form>
