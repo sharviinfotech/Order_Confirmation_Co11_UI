@@ -3,29 +3,31 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface ProductionPlan {
-  orderId: string;
-  product: string;
-  plannedQty: number;
-  actualQty: number;
-  shift: string;
-  assignedOperator: string;
-  assignedSupervisor: string;
-  date: string;
-  toDate: string;
-  machine: string;
-  plantCode: string;
-  status: string;
+  Confirmation: string;
+  Material: string;
+  MatDescr: string;                   // Material Description
+  Order: string;
+  Operation: string;
+  Suboperation: string;
+  Split: string;
+  Plant: string;
+  ClearOpenReservations: string;
+  Sequence: string;                  // Sequence
+  Yield: number;
+  Scrap: number;
+  Rework: number;
+  ReasonForVariance: string;
 }
 
 @Component({
   selector: 'app-co11',
-    standalone: true,
+  standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './co11.component.html',
-  styleUrl: './co11.component.css'
+  styleUrls: ['./co11.component.css']
 })
 export class Co11Component {
- plans: ProductionPlan[] = [];
+  plans: ProductionPlan[] = [];
   isEditMode = false;
   editIndex: number | null = null;
   planForm!: FormGroup;
@@ -35,31 +37,30 @@ export class Co11Component {
   }
 
   createForm() {
-    const today = new Date().toISOString().substring(0, 10);
+    // Initialize the reactive form with all fields, matching the interface
     this.planForm = this.fb.group({
-      orderId: ['', Validators.required],
-      product: ['', Validators.required],
-      plannedQty: ['', Validators.required],
-      actualQty: [''], // optional
-      shift: ['', Validators.required],
-      assignedOperator: ['', Validators.required],
-      assignedSupervisor: ['', Validators.required],
-      date: [today, Validators.required],
-      toDate: [today, Validators.required],
-      machine: ['', Validators.required],
-      plantCode: ['', Validators.required],
-      status: ['', Validators.required]
+      Confirmation: ['', Validators.required],
+      Material: ['', Validators.required],
+      MatDescr: ['', Validators.required],
+      Order: ['', Validators.required],
+      Operation: ['', Validators.required],
+      Suboperation: ['', Validators.required],
+      Split: ['', Validators.required],
+      Plant: ['', Validators.required],
+      ClearOpenReservations: [''],
+      Sequence: ['', Validators.required],
+      Yield: [null, Validators.required],
+      Scrap: [null],
+      Rework: [null],
+      ReasonForVariance: ['']
     });
   }
 
-  // This method will be called by your edit button
   editPlan(index: number) {
     this.isEditMode = true;
     this.editIndex = index;
     const plan = this.plans[index];
     this.planForm.setValue({ ...plan });
-    
-    // Scroll to top so user can see the form
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -72,37 +73,30 @@ export class Co11Component {
     const plan: ProductionPlan = this.planForm.value;
 
     if (this.isEditMode && this.editIndex !== null) {
-      // Update existing plan
       this.plans[this.editIndex] = { ...plan };
       this.isEditMode = false;
       this.editIndex = null;
     } else {
-      // Add new plan
       this.plans.push({ ...plan });
     }
 
     this.planForm.reset();
-    this.createForm(); // Reset form with default values
+    this.createForm(); // Reset form and reinitialize validators
   }
 
   cancelEdit() {
     this.isEditMode = false;
     this.editIndex = null;
     this.planForm.reset();
-    this.createForm(); // Reset form with default values
+    this.createForm();
   }
 
   deletePlan(index: number) {
-    // If we're editing the plan that's being deleted, cancel edit mode
     if (this.editIndex === index) {
       this.cancelEdit();
-    }
-    // If we're editing a plan after the deleted one, adjust the index
-    else if (this.editIndex !== null && this.editIndex > index) {
+    } else if (this.editIndex !== null && this.editIndex > index) {
       this.editIndex--;
     }
-    
     this.plans.splice(index, 1);
   }
 }
-

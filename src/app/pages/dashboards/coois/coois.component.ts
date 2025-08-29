@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 export class CooisComponent {
   form: FormGroup;
 
-  dropdownOptions: string[] = ['Order Headers', 'CONFIRMATION', 'Goods'];
+  dropdownOptions: string[] = ['Order Headers', 'Confirmation', 'Goods'];
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -31,6 +31,16 @@ export class CooisComponent {
       KDPOS_F: [''], // From Sales Order Item
       KDPOS_T: ['']  // To Sales Order Item
     });
+  }
+    onSubmit(): void {
+    if (this.form.valid) {
+      // Handle form submission logic here
+      console.log('Form submitted', this.form.value);
+      
+    } else {
+      // Optionally mark controls touched or show error
+      console.log('Form is invalid');
+    }
   }
 
 }
