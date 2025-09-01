@@ -161,7 +161,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
     //     return;
     // }
 
-    const userActivity = this.loginData.data.userActivity;
+    // const userActivity = this.loginData.data.userActivity;
 
     // Define access rules
     // const accessMap = {

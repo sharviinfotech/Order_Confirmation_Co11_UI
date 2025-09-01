@@ -113,4 +113,10 @@ getLoginResponse(){
     return this.http.post(environment.baseUrl+'api/invoice/sectorWiseSave',obj);
  
   }
+
+
+  coois(obj){
+    return this.http.post(environment.baseUrl+'api/external/orderconfirmation/coois',obj);
+ 
+  }
 }
