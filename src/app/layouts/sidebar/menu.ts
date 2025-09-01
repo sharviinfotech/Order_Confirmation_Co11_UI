@@ -23,7 +23,7 @@ export const MENU: MenuItem[] = [
              
               {
                 id: 3,
-                label: 'Coois',
+                label: 'Order Info System',
                 link: '/coois',
                 parentId: 2,
                 icon: 'bx-home-circle',

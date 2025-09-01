@@ -2,21 +2,28 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-interface ProductionPlan {
-  Confirmation: string;
-  Material: string;
-  MatDescr: string;                   // Material Description
-  Order: string;
-  Operation: string;
-  Suboperation: string;
-  Split: string;
-  Plant: string;
-  ClearOpenReservations: string;
-  Sequence: string;                  // Sequence
-  Yield: number;
-  Scrap: number;
-  Rework: number;
-  ReasonForVariance: string;
+interface Variance {
+  yield: string;
+  scrap: string;
+  rework: string;
+  reasonForVariance: string;
+}
+
+interface Co11Plan {
+  AUFNR: string;        
+  VORNR: string;       
+  WERKS: string;       
+  GAMNG: string;        
+  WEMNG: string;        
+  BALANCEQTY: string;   
+  TCONFQTY: string;    
+  TBALANCEQTY: string;  
+  shift: string;        
+  POSTDATE: string;     
+  WORK_CNTR: string;    
+  PLNBEZ: string;       
+  DEFRBATCH: string;    
+  variance: Variance;   
 }
 
 @Component({
@@ -27,7 +34,7 @@ interface ProductionPlan {
   styleUrls: ['./co11.component.css']
 })
 export class Co11Component {
-  plans: ProductionPlan[] = [];
+  plans: Co11Plan[] = [];
   isEditMode = false;
   editIndex: number | null = null;
   planForm!: FormGroup;
@@ -37,22 +44,28 @@ export class Co11Component {
   }
 
   createForm() {
-    // Initialize the reactive form with all fields, matching the interface
     this.planForm = this.fb.group({
-      Confirmation: ['', Validators.required],
-      Material: ['', Validators.required],
-      MatDescr: ['', Validators.required],
-      Order: ['', Validators.required],
-      Operation: ['', Validators.required],
-      Suboperation: ['', Validators.required],
-      Split: ['', Validators.required],
-      Plant: ['', Validators.required],
-      ClearOpenReservations: [''],
-      Sequence: ['', Validators.required],
-      Yield: [null, Validators.required],
-      Scrap: [null],
-      Rework: [null],
-      ReasonForVariance: ['']
+      AUFNR: ['', Validators.required],
+      VORNR: ['', Validators.required],
+      WERKS: ['', Validators.required],
+      GAMNG: ['', Validators.required],
+      WEMNG: ['', Validators.required],
+      BALANCEQTY: ['', Validators.required],
+      TCONFQTY: ['', Validators.required],
+      TBALANCEQTY: ['', Validators.required],
+      shift: ['', Validators.required],
+      POSTDATE: ['', Validators.required],
+      WORK_CNTR: ['', Validators.required],
+      PLNBEZ: ['', Validators.required],
+      DEFRBATCH: ['', Validators.required],
+
+      // ✅ Nested group for Quantities
+      variance: this.fb.group({
+        yield: ['', Validators.required],
+        scrap: [''],
+        rework: [''],
+        reasonForVariance: ['']
+      })
     });
   }
 
@@ -60,7 +73,7 @@ export class Co11Component {
     this.isEditMode = true;
     this.editIndex = index;
     const plan = this.plans[index];
-    this.planForm.setValue({ ...plan });
+    this.planForm.setValue({ ...plan }); 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -70,7 +83,7 @@ export class Co11Component {
       return;
     }
 
-    const plan: ProductionPlan = this.planForm.value;
+    const plan: Co11Plan = this.planForm.value;
 
     if (this.isEditMode && this.editIndex !== null) {
       this.plans[this.editIndex] = { ...plan };
@@ -81,7 +94,7 @@ export class Co11Component {
     }
 
     this.planForm.reset();
-    this.createForm(); // Reset form and reinitialize validators
+    this.createForm(); // reinitialize validators
   }
 
   cancelEdit() {

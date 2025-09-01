@@ -1,0 +1,43 @@
+/* 🔹 Grid Layout */
+
+
+/* 🔹 Floating Label Fields */
+
+
+/* Label floating effect */
+.form-field label {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 14px;
+  pointer-events: none;
+  transition: all 0.2s ease-in-out;
+  background: white;
+  padding: 0 4px;
+}
+
+/* When typing or focus → float label */
+.form-field input:focus + label,
+.form-field input:not(:placeholder-shown) + label,
+.form-field select:focus + label,
+.form-field select:not([value=""]) + label {
+  top: -8px;
+  left: 8px;
+  font-size: 12px;
+  color: #007bff;
+}
+
+/* 🔹 Buttons row spans all 4 columns */
+.form-actions {
+  grid-column: span 4;
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+
+
+
+

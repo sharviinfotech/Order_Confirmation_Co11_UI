@@ -6,26 +6,143 @@
     </span>
   </div>
   <div class="card-body">
-    <form class="form-grid vstack gap-4" [formGroup]="planForm" (ngSubmit)="savePlan()">
+    <form class="form-grid" [formGroup]="planForm" (ngSubmit)="savePlan()">
 
       <!-- Card 1: Goods Movement -->
       <div class="card w-100">
         <div class="card-header">Goods Movement</div>
-        <div class="card-body">
-          <div class="row g-3">
-            <div class="col-md-6">
-              <label for="confirmation">Confirmation</label>
-              <input id="confirmation" type="text" formControlName="confirmation" placeholder=" " />
-            </div>
-            <div class="col-md-6">
-              <label for="material">Material</label>
-              <input id="material" type="text" formControlName="material" placeholder=" " />
-            </div>
-            <div class="col-md-6">
-              <label for="order">Order</label>
-              <input id="order" type="text" formControlName="order" placeholder=" " />
-            </div>
-            <div class="col-md-6">
+          <div class="card-body">
+             <div class="row">
+
+              <div class="col-md-3 mb-5">
+                 <div class="form-field">
+                   <input type="text" formControlName="VORNR" placeholder=" " />
+                   <label>Activity Number</label>
+                   <small class="error" *ngIf="planForm.get('VORNR')?.touched && planForm.get('VORNR')?.invalid">
+                    Activity Number is required
+                   </small>
+                  </div>
+              </div>
+              
+              <div class="col-md-3 mb-5">
+                <div class="form-field">
+                  <input type="text" formControlName="WERKS" placeholder=" " />
+                  <label>Plant</label>
+                  <small class="error" *ngIf="planForm.get('WERKS')?.touched && planForm.get('WERKS')?.invalid">
+                  Plant is required
+                  </small>
+                </div>
+              </div>
+
+              
+              <div class="col-md-3 mb-5">
+                <div class="form-field">
+                  <input type="text" formControlName="GAMNG" placeholder=" " />
+                  <label>Total Order Quantity</label>
+                  <small class="error" *ngIf="planForm.get('GAMNG')?.touched && planForm.get('GAMNG')?.invalid">
+                  Order Quantity is required
+                  </small>
+                </div>
+             </div>
+
+             <div class="col-md-3 mb-5">
+                <div class="form-field">
+                  <input type="text" formControlName="WEMNG" placeholder=" " />
+                  <label>Quantity of Goods Received</label>
+                  <small class="error" *ngIf="planForm.get('WEMNG')?.touched && planForm.get('WEMNG')?.invalid">
+                  Quantity of Goods Received is required
+                  </small>
+                </div>
+              </div>
+
+              <div class="col-md-3 mb-5">
+                <div class="form-field">
+                 <input type="text" formControlName="BALANCEQTY" placeholder=" " />
+                 <label>BALANCEQTY</label>
+                  <small class="error" *ngIf="planForm.get('BALANCEQTY')?.touched && planForm.get('BALANCEQTY')?.invalid">
+                  BALANCEQTY is required
+                  </small>
+                </div>
+              </div>
+
+              <div class="col-md-3 mb-5">
+                <div class="form-field">
+                  <input type="text" formControlName="TCONFQTY" placeholder=" " />
+                  <label>TCONFQTY</label>
+                  <small class="error" *ngIf="planForm.get('TCONFQTY')?.touched && planForm.get('TCONFQTY')?.invalid">
+                  TCONFQTY is required
+                  </small>
+                </div>
+              </div>
+
+              <div class="col-md-3 mb-5">
+                <div class="form-field">
+                  <input type="text" formControlName="TBALANCEQTY" placeholder=" " />
+                  <label>TBALANCEQTY</label>
+                  <small class="error" *ngIf="planForm.get('TBALANCEQTY')?.touched && planForm.get('TBALANCEQTY')?.invalid">
+                   TBALANCEQTY is required
+                  </small>
+                </div>
+              </div>
+
+              <div class="col-md-3 mb-5">
+               <div class="form-field">
+                 <select formControlName="shift">
+                   <!-- <option value="" disabled selected hidden>Select Shift</option> -->
+                   <option value="Shift A">Shift A</option>
+                   <option value="Shift B">Shift B</option>
+                   <option value="Shift C">Shift C</option>
+                  </select>
+                  <label>Shift</label>
+                 <small class="error" *ngIf="planForm.get('shift')?.touched && planForm.get('shift')?.invalid">
+                  Shift is required
+                  </small>
+                </div>
+              </div>
+
+              <div class="col-md-3 mb-5">
+              <div class="form-field">
+                <input type="text" formControlName="POSTDATE" placeholder=" " />
+                <label>Posting Date in the Document</label>
+                <small class="error" *ngIf="planForm.get('POSTDATE')?.touched && planForm.get('POSTDATE')?.invalid">
+                Posting Date in the Document is required
+                </small>
+              </div>
+              </div>
+
+              <div class="col-md-3 mb-5">
+              <div class="form-field">
+                <input type="text" formControlName="WORK_CNTR" placeholder=" " />
+                <label>Work Center</label>
+                <small class="error" *ngIf="planForm.get('WORK_CNTR')?.touched && planForm.get('WORK_CNTR')?.invalid">
+                Work Center is required
+                </small>
+              </div>
+              </div>
+
+              <div class="col-md-3 mb-5">
+              <div class="form-field">
+                <input type="text" formControlName="PLNBEZ" placeholder=" " />
+                <label>Material Number</label>
+                <small class="error" *ngIf="planForm.get('PLNBEZ')?.touched && planForm.get('PLNBEZ')?.invalid">
+                Material Number is required
+                </small>
+              </div>
+              </div>
+
+              <div class="col-md-3 mb-5">
+              <div class="form-field">
+                <input type="text" formControlName="DEFRBATCH" placeholder=" " />
+                <label>Batch Number</label>
+                <small class="error" *ngIf="planForm.get('DEFRBATCH')?.touched && planForm.get('DEFRBATCH')?.invalid">
+                Batch Number is required
+                </small>
+              </div>
+              </div>
+
+
+
+            <!-- <div class="form-field">
               <label for="matDescr">Mat.Descr.</label>
               <input id="matDescr" type="text" formControlName="matDescr" placeholder=" " />
             </div>
@@ -64,7 +181,7 @@
             <div class="col-md-6">
               <label for="clearOpenReservations">Clear Open Reservations</label>
               <input id="clearOpenReservations" type="text" formControlName="clearOpenReservations" placeholder=" " />
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
